@@ -14,5 +14,13 @@ const theme = createTheme({
       main: "#e76f51",
     },
   },
+  typography: {
+    fontFamily: ` "Vazir", Arial, sans-serif`,
+    fontSize: 12.5,
+    fontWeightLight: 300,
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+    // button: {}
+  },
 });
 export default theme;

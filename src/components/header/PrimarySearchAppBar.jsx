@@ -142,19 +142,7 @@ const PrimarySearchAppBar = (props) => {
         >
           <AccountCircle />
         </IconButton>
-        <p>خروج از حساب</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>تغییر رمز عبور</p>
+        <p>حساب کاربری</p>
       </MenuItem>
     </Menu>
   );
@@ -196,17 +184,20 @@ const PrimarySearchAppBar = (props) => {
           <AccountCircle />
         </IconButton>
       </Box>
-      <IconButton
-        size="large"
-        aria-label="show more"
-        aria-controls={mobileMenuId}
-        aria-haspopup="true"
-        onClick={handleMobileMenuOpen}
-        color="inherit"
-      >
-        <MoreIcon />
-      </IconButton>
+      <Box sx={{ display: { xs: "flex", md: "none" } }}>
+        <IconButton
+          size="large"
+          aria-label="show more"
+          aria-controls={mobileMenuId}
+          aria-haspopup="true"
+          onClick={handleMobileMenuOpen}
+          color="inherit"
+        >
+          <MoreIcon />
+        </IconButton>
+      </Box>
       {isLoggedIn && renderMobileMenu}
+      {isLoggedIn && renderMenu}
     </React.Fragment>
   );
 
@@ -248,21 +239,11 @@ const PrimarySearchAppBar = (props) => {
                 ورود
               </Button>
             )}
-            {/* {isLoggedIn && (
-              <Button onClick={lougoutHandler} color="inherit">
-                خروج
-              </Button>
-            )} */}
-            {/* {isLoggedIn && (
-              <Button  color="inherit">
-                تغییر رمز
-              </Button>
-            )} */}
-            {isLoggedIn && loggedInIcons}
           </Box>
+          {isLoggedIn && loggedInIcons}
         </Toolbar>
       </AppBar>
-      {isLoggedIn && renderMenu}
+      {/* {isLoggedIn && renderMenu} */}
     </Box>
   );
 };

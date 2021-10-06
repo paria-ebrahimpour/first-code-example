@@ -15,6 +15,8 @@ import AuthContext from "../store/auth-context";
 import { useHistory } from "react-router-dom";
 
 const SignIn = () => {
+  // const [isLogin, setIsLogin] = useState(true);
+
   const history = useHistory();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -45,6 +47,10 @@ const SignIn = () => {
   if (enteredEmailIsValid && enteredPassIsValid) {
     formIsValid = true;
   }
+
+  //   const switchAuthModeHandler = () => {
+  //   setIsLogin((prevState) => !prevState);
+  // };
 
   const formSubmissionHandler = (event) => {
     event.preventDefault();
@@ -120,6 +126,7 @@ const SignIn = () => {
         }}
       >
         <Typography component="h1" variant="h5">
+          {/* {isLogin ? ' ورود به حساب کاربری' : 'ثبت نام در سایت'} */}
           ورود به حساب کاربری
         </Typography>
         <Box component="form" noValidate sx={{ mt: 3 }}>
