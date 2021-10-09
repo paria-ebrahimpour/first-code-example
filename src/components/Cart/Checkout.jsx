@@ -4,11 +4,12 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { Button } from "@mui/material";
 
 // const isEmpty = (value) => value.trim() === "";
 
 const Checkout = (props) => {
-  const [formInputValidity, setFormInputValidity] = useState(true);
+  // const [formInputValidity, setFormInputValidity] = useState(true);
   const [address, setAddress] = useState("");
   const [orders, setOrders] = useState([]);
 
@@ -30,10 +31,15 @@ const Checkout = (props) => {
       }
       setOrders(loadedOrders);
     };
+    // if (orders > 0) {
+    //   setHadAdress(true);
+    // } else {
+    //   setHadAdress(false);
+    // }
     fetchOrders();
   }, []);
 
-  const handleChange = (event) => {
+  const changeHandler = (event) => {
     setAddress(event.target.value);
   };
 
@@ -54,71 +60,104 @@ const Checkout = (props) => {
     //   return;
     // }
     setAddress(event.target.value);
-    console.log(orders);
+
     props.onConfirm({
       street: orders,
     });
   };
 
-  const streetControlClasses = `${classes.control} ${
-    formInputValidity.street ? "" : classes.invalid
-  }`;
+  let addresslist = (
+    <React.Fragment>
+      <h4>آدرسی وجود ندارد. لطفا آدرس خود را وارد کنید</h4>
+      <Button variant="contained" href="/my-account/addresses">
+        ثبت آدرس
+      </Button>
+    </React.Fragment>
+  );
+
+  if (orders.length > 0) {
+    addresslist = (
+      <form className={classes.form} onSubmit={confirmHandler}>
+        <FormControl variant="standard" sx={{ m: 1, minWidth: 280 }}>
+          <InputLabel id="demo-simple-select-standard-label">
+            آدرس مورد نظر
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-standard-label"
+            id="demo-simple-select-standard"
+            onChange={changeHandler}
+            label="address"
+            type="submit"
+          >
+            {orders.map((ad) => (
+              <MenuItem
+                value={orders}
+                // key={ad.id}
+                // id={ad.id}
+                // city={ad.city}
+                // address={ad.address}
+              >
+                <span>
+                  {ad.city} - {ad.address}
+                </span>
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <div className={classes.actions}>
+          <button type="button" onClick={props.onCancel}>
+            بستن
+          </button>
+          <button className={classes.submit}>ثبت سفارش</button>
+        </div>
+      </form>
+    );
+  }
+
+  let content = addresslist;
+
+  // const streetControlClasses = `${classes.control} ${
+  //   formInputValidity.street ? "" : classes.invalid
+  // }`;
 
   return (
-    <form className={classes.form} onSubmit={confirmHandler}>
-      {/* <div className={streetControlClasses}>
-        <label htmlFor="street">انتخاب آدرس</label>
-        <input type="text" id="street" ref={streetInputRef} />
-        {!formInputValidity.street && (
-          <p>لطفا آدرس مورد نظر خود را انتخاب کنید</p>
-        )}
-      </div> */}
-
-      <FormControl variant="standard" sx={{ m: 1, minWidth: 280 }}>
-        <InputLabel id="demo-simple-select-standard-label">
-          آدرس مورد نظر
-        </InputLabel>
-        <Select
-          labelId="demo-simple-select-standard-label"
-          id="demo-simple-select-standard"
-          // defaultValue={orders}
-          onChange={handleChange}
-          label="address"
-          type="submit"
-        >
-          {orders.map((ad) => (
-            <MenuItem
-              value={orders}
-              // key={address.id}
-              // id={address.id}
-              // city={address.city}
-              // address={address.address}
-            >
-              <span>
-                {ad.city} - {ad.address}
-              </span>
-            </MenuItem>
-          ))}
-          {/* <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem> */}
-        </Select>
-      </FormControl>
-
-      {/* <div className={cityControlClasses}>
-        <label htmlFor="city">انتخاب آدرس</label>
-        <SelectItem />
-        {!formInputValidity.city && (
-          <p>لطفا آدرس مورد نظر خود را انتخاب کنید</p>
-        )}
-      </div> */}
-      <div className={classes.actions}>
-        <button type="button" onClick={props.onCancel}>
-          بستن
-        </button>
-        <button className={classes.submit}>ثبت سفارش</button>
-      </div>
-    </form>
+    <React.Fragment>
+      {content}
+      {/* <form className={classes.form} onSubmit={confirmHandler}>
+        <FormControl variant="standard" sx={{ m: 1, minWidth: 280 }}>
+          <InputLabel id="demo-simple-select-standard-label">
+            آدرس مورد نظر
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-standard-label"
+            id="demo-simple-select-standard"
+            onChange={changeHandler}
+            label="address"
+            type="submit"
+          >
+            {orders.map((ad) => (
+              <MenuItem
+                value={orders}
+                // key={ad.id}
+                // id={ad.id}
+                // city={ad.city}
+                // address={ad.address}
+              >
+                <span>
+                  {ad.city} - {ad.address}
+                </span>
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <div className={classes.actions}>
+          <button type="button" onClick={props.onCancel}>
+            بستن
+          </button>
+          <button className={classes.submit}>ثبت سفارش</button>
+        </div>
+      </form> */}
+    </React.Fragment>
   );
 };
 

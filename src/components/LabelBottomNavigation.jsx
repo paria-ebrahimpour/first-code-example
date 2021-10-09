@@ -19,29 +19,16 @@ export default function LabelBottomNavigation() {
     // width: "100%",
     position: "fixed",
     bottom: 0,
-    alignContent: "space-between",
-    alignItems: "center",
-    // borderRadius: theme.shape.borderRadius,
-    // backgroundColor:
-    // alpha(theme.palette.common.white, 0.15),
-    // "&:hover": {
-    //   backgroundColor: alpha(theme.palette.common.white, 0.25),
-    // },
-    // marginRight: theme.spacing(2),
-    // margin: 0,
-    // width: "100%",
-    // [theme.breakpoints.up("sm")]: {
-    //   marginLeft: theme.spacing(3),
-    //   width: "auto",
-    // },
+    // alignContent: "space-between",
+    // alignItems: "center",
   }));
 
   // const BottomNavigationAction = styled("div")(({ theme }) => ({
   //   color: "#2a9d8f",
   // }));
   return (
-    <BottomNavigation sx={{ width: 1 }} value={value} onChange={handleChange}>
-      {" "}
+    <BottomNavigation fullWidth value={value} onChange={handleChange}>
+      {/* {" "} */}
       <BottomNavigationAction
         backgroundColor="error"
         component={NavLink}

@@ -7,11 +7,12 @@ import SearchProduct from "./SearchProduct";
 import { Button } from "@mui/material";
 import { useHistory, useLocation } from "react-router-dom";
 import Grid from "@mui/material/Grid";
+import LoadingSpinner from "./../UI/LoadingSpinner";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [httpError, setHttpError] = useState();
+  const [httpError, setHttpError] = useState(false);
   const history = useHistory();
   const location = useLocation();
 
@@ -53,11 +54,7 @@ const Products = () => {
   }, []);
 
   if (isLoading) {
-    return (
-      <section className={classes.MealsLoading}>
-        <p>Loading...</p>
-      </section>
-    );
+    return <LoadingSpinner />;
   }
   if (httpError) {
     <section className={classes.MealsError}>

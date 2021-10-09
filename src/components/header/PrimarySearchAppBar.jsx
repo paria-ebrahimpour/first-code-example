@@ -71,6 +71,14 @@ const PrimarySearchAppBar = (props) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  // const AppBarFixed = styled("div")(({ theme }) => ({
+  //   // width: "100%",
+  //   position: "fixed",
+  //   top: 0,
+  //   // alignContent: "space-between",
+  //   // alignItems: "center",
+  // }));
+
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -223,7 +231,7 @@ const PrimarySearchAppBar = (props) => {
             sx={{ display: { xs: "none", sm: "block" } }}
           >
             <p underline="none" color="white" href="/">
-              سایت سفارش غذا
+              نام سایت
             </p>
           </Typography>
 

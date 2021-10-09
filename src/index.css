@@ -1,10 +1,15 @@
 html {
   direction: rtl;
+  /* display: flexbox; */
+  text-align: center;
+  width: 100%;
+  margin: auto;
 }
 body {
   background-color: #f4f4f4;
   font-family: sans-serif;
-  direction: rtl;
+  text-align: center;
+  /* ]  direction: rtl; */
   /* text-align: center; badan ino bezaro hame center haro az html hazf  kon */
 }
 p {
@@ -12,6 +17,7 @@ p {
   margin: 0 auto;
   line-height: 2;
   font-size: 1.2rem;
+  text-align: center;
 }
 button,
 input,
@@ -22,10 +28,10 @@ textarea {
 }
 
 caption {
-  text-align: right;
+  text-align: center;
 }
 th {
-  text-align: right;
+  text-align: center;
 }
 
 @media (min-width: 768px) {

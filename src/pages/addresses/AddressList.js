@@ -30,7 +30,7 @@ const AddressList = (props) => {
     fetchAddresses();
   }, []);
 
-  let addressList = <h2>آدرسی وجود ندارد. لطفا آدرس خود را وارد کنید</h2>;
+  let addressList = <h4>آدرسی وجود ندارد. لطفا آدرس خود را وارد کنید</h4>;
 
   if (addresses.length > 0) {
     addressList = (
@@ -43,8 +43,9 @@ const AddressList = (props) => {
             address={address.address}
             postalCode={address.postslCode}
           >
-            <p>{address.city}</p>
-            <p>{address.address}</p>
+            <span>
+              {address.city} - {address.address}
+            </span>
           </AddressItem>
         ))}
       </ul>

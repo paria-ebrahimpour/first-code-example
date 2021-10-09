@@ -1,6 +1,9 @@
 import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
+  root: {
+    justifyContent: "center",
+  },
   palette: {
     primary: {
       main: "#2a9d8f",
