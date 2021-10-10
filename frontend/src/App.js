@@ -9,15 +9,19 @@ import theme from "./theme";
 import LoadingSpinner from "./components/UI/LoadingSpinner";
 import ExitCart from "./components/Cart/ExitCart";
 import AuthContext from "./store/auth-context";
+// import ProtectedRoute from "./auth/protected-route";
+import SignupButton from "./components/auth-buttons/signup-button";
+import AuthenticationButton from "./components/auth-buttons/authentication-button";
 
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const AccountManager = React.lazy(() => import("./pages/AccountManager"));
 const OrderList = React.lazy(() => import("./pages/OrderList"));
 const SignIn = React.lazy(() => import("./pages/SignIn"));
 const SignUp = React.lazy(() => import("./pages/SignUp"));
+const Reset = React.lazy(() => import("./pages/reset-pass"));
 const ProductList = React.lazy(() => import("./pages/ProductList"));
 const Addresses = React.lazy(() => import("./pages/addresses/Addresses"));
-const ChangePass = React.lazy(() => import("./pages/changePass/changePass"));
+// const ChangePass = React.lazy(() => import("./pages/changePass/changePass"));
 
 const App = () => {
   const authCtx = useContext(AuthContext);
@@ -67,14 +71,20 @@ const App = () => {
               <Route path="/" exact>
                 <ProductList />
               </Route>
+              <Route path="/reset" exact>
+                <Reset />
+              </Route>
               {/* <Route path="/" exact>
                 <Redirect to="/product-list" />
               </Route> */}
-              {authCtx.isLoggedIn && (
+              {/* {authCtx.isLoggedIn && (
                 <Route path="/new-pass">
                   <ChangePass />
-                </Route>
-              )}
+                </Route> */}
+              {/* )} */}
+                {/* <ProtectedRoute path="/new-pass">
+                <ChangePass />
+                </ProtectedRoute> */}
               <Route path="/my-account" exact>
                 <AccountManager onShowExitCart={showExitCartHandler} />
               </Route>

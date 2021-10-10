@@ -17,6 +17,8 @@ import { Link } from "react-router-dom";
 import logo from "../../images/logo.png";
 import AuthContext from "../../store/auth-context";
 import MoreIcon from "@mui/icons-material/MoreVert";
+import AuthenticationButton from "../auth-buttons/authentication-button";
+import SignupButton from "../auth-buttons/signup-button";
 
 const PrimarySearchAppBar = (props) => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -234,6 +236,8 @@ const PrimarySearchAppBar = (props) => {
               نام سایت
             </p>
           </Typography>
+          <AuthenticationButton/>
+      <SignupButton/>
 
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>

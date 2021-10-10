@@ -9,10 +9,13 @@ import PersonIcon from "@mui/icons-material/Person";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import RoomIcon from "@mui/icons-material/Room";
 import { useHistory } from "react-router-dom";
+import { useAuth0 } from '@auth0/auth0-react';
 
 const AccountManager = (props) => {
   // const [accountClicked, setAccountClicked] = useState(false);
   // const [addressClicked, setAddressClicked] = useState(false);
+  const { user } = useAuth0();
+  const { name, picture, email } = user;
 
   const history = useHistory();
 
@@ -26,6 +29,29 @@ const AccountManager = (props) => {
     return history.push("/my-account/addresses");
   };
 
+const accountinfo =(
+  <React.Fragment>
+  <div className="row align-items-center profile-header">
+        <div className="col-md-2 mb-3">
+          <img
+            src={picture}
+            alt="Profile"
+            className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
+          />
+        </div>
+        <div className="col-md text-center text-md-left">
+          <h2>{name}</h2>
+          <p className="lead text-muted">{email}</p>
+        </div>
+      </div>
+      <div className="row">
+        <pre className="col-12 text-light bg-dark p-4">
+          {JSON.stringify(user, null, 2)}
+        </pre>
+      </div>
+      </React.Fragment>
+)
+
   return (
     <List
       sx={{
@@ -38,7 +64,7 @@ const AccountManager = (props) => {
       aria-labelledby="nested-list-subheader"
       subheader={
         <ListSubheader component="div" id="nested-list-subheader">
-          نام و نام خانوادگی کاربر نمایش داده شود
+         {accountinfo}
         </ListSubheader>
       }
     >
