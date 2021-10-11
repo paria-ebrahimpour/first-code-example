@@ -17,8 +17,8 @@ import { Link } from "react-router-dom";
 import logo from "../../images/logo.png";
 import AuthContext from "../../store/auth-context";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import AuthenticationButton from "../auth-buttons/authentication-button";
-import SignupButton from "../auth-buttons/signup-button";
+// import AuthenticationButton from "../auth-buttons/authentication-button";
+// import SignupButton from "../auth-buttons/signup-button";
 
 const PrimarySearchAppBar = (props) => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -72,14 +72,6 @@ const PrimarySearchAppBar = (props) => {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-
-  // const AppBarFixed = styled("div")(({ theme }) => ({
-  //   // width: "100%",
-  //   position: "fixed",
-  //   top: 0,
-  //   // alignContent: "space-between",
-  //   // alignItems: "center",
-  // }));
 
   const menuId = "primary-search-account-menu";
   const renderMenu = (
@@ -212,8 +204,10 @@ const PrimarySearchAppBar = (props) => {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <Box  sx={{ position:"static", top: 0, left: 0, right: 0, marginBottom: 12}} 
+    // sx={{ flexGrow: 1 }}
+    >
+      <AppBar >
         <Toolbar>
           <IconButton
             size="large"
@@ -236,8 +230,8 @@ const PrimarySearchAppBar = (props) => {
               نام سایت
             </p>
           </Typography>
-          <AuthenticationButton/>
-      <SignupButton/>
+          {/* <AuthenticationButton/>
+      <SignupButton/> */}
 
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>

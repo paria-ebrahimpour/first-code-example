@@ -21,7 +21,7 @@ const SearchProduct = ({ searchQuery, setSearchQuery }) => {
   }));
 
   const SearchIconWrapper = styled("div")(({ theme }) => ({
-    padding: theme.spacing(0, 2),
+    // padding: theme.spacing(0, 2),
     height: "100%",
     position: "absolute",
     pointerEvents: "none",
@@ -32,16 +32,16 @@ const SearchProduct = ({ searchQuery, setSearchQuery }) => {
 
   const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: "inherit",
-    "& .MuiInputBase-input": {
-      padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create("width"),
-      width: "100%",
-      [theme.breakpoints.up("md")]: {
-        width: "20ch",
-      },
-    },
+    textAlign: "right",
+    width: "30%",
+    // "& .MuiInputBase-input": {
+    //   // padding: theme.spacing(1, 1, 1, 0),
+    //   // paddingLeft: `calc(1em + ${theme.spacing(1)})`,
+    //   // transition: theme.transitions.create("width"),
+    //   [theme.breakpoints.up("md")]: {
+    //     width: "15ch",
+    //   },
+    // },
   }));
 
   return (
@@ -55,7 +55,7 @@ const SearchProduct = ({ searchQuery, setSearchQuery }) => {
         name="search"
         id="productSearch"
         placeholder="جست و جو ..."
-        inputProps={{ "aria-label": "search" }}
+        // inputProps={{ "aria-label": "search" }}
       />
     </Search>
   );

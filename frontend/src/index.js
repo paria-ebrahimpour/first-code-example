@@ -4,18 +4,18 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-// import { AuthContextProvider } from "./store/auth-context";
-import Auth0ProviderWithHistory from './auth/auth0-provider-with-history';
+import { AuthContextProvider } from "./store/auth-context";
+// import Auth0ProviderWithHistory from './auth/auth0-provider-with-history';
 
 ReactDOM.render(
   <React.StrictMode>
-   <Auth0ProviderWithHistory>
-    {/* <AuthContextProvider> */}
+   {/* <Auth0ProviderWithHistory> */}
+    <AuthContextProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-      </Auth0ProviderWithHistory>
-    {/* </AuthContextProvider> */}
+      {/* </Auth0ProviderWithHistory> */}
+    </AuthContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

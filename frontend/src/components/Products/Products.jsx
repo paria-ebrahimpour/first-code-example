@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
-import Card from "../UI/Card";
+// import Card from "../UI/Card";
 
 import classes from "./Products.module.css";
 import MealItem from "./MealItem/MealItem";
 import SearchProduct from "./SearchProduct";
-import { Button } from "@mui/material";
+// import { Button } from "@mui/material";
 import { useHistory, useLocation } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import LoadingSpinner from "./../UI/LoadingSpinner";
+// import SortByAlphaIcon from '@mui/icons-material/SortByAlpha';
+import SortIcon from '@mui/icons-material/Sort';
+import { Card } from "@mui/material";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -40,6 +43,7 @@ const Products = () => {
           name: responseData[key].name,
           description: responseData[key].description,
           price: responseData[key].price,
+          image:responseData[key].image
         });
       }
 
@@ -102,35 +106,61 @@ const Products = () => {
     });
   };
 
-  const productsList = sortedQuotes.map((p) => (
-    <MealItem
+  const productsList = (
+    // <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+  sortedQuotes.map((p) => (
+      <MealItem
       key={p.id}
       id={p.id}
+      image={p.image}
       name={p.name}
       description={p.description}
       price={p.price}
-    />
-  ));
+      image={p.image}
+    />   
+  ))
+  // </Grid>)
+  )
 
   return (
     <section className={classes.meals}>
-      <Grid container spacing={2}>
-        <Grid item xs={12} md={8}>
+      <Grid container >
+      <Grid item  md={1}>
+        <div  onClick={changeSortingHandler}>
+          {/* <SortByAlphaIcon  variant="inherit"/> */}
+          {isSortingAscending 
+          ?  <SortIcon sx={{ transform: "scaleX(-1)" }}/>
+          :  <SortIcon sx={{ transform: "rotate(-180deg)"}}/>
+          }
+        
+        </div>
+          {/* <Button variant="outlined" onClick={changeSortingHandler}>
+            مرتب سازی بر اساس{" "}
+            {isSortingAscending ? "بیشترین قیمت" : "کمترین قیمت"}
+          </Button> */}
+        </Grid>
+        <Grid item md={8}>
           <SearchProduct
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
           />
         </Grid>
-        <Grid item xs={12} md={4}>
-          <Button variant="outlined" onClick={changeSortingHandler}>
-            مرتب سازی بر اساس{" "}
-            {isSortingAscending ? "بیشترین قیمت" : "کمترین قیمت"}
-          </Button>
-        </Grid>
       </Grid>
-      <Card>
-        <ul>{productsList}</ul>
-      </Card>
+      <Grid container sx={{ marginBottom: "9%"}} spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+     { sortedQuotes.map((p) => (
+      <Grid item xs={12} sm={4} md={4}>
+      <MealItem
+      key={p.id}
+      id={p.id}
+      image={p.image}
+      name={p.name}
+      description={p.description}
+      price={p.price}
+      image={p.image}
+    />  
+    </Grid> 
+  ))}
+    </Grid>
     </section>
   );
 };

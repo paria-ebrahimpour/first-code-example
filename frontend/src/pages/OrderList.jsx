@@ -12,6 +12,7 @@ import AddressItem from "./addresses/AddressItem";
 import classes from "./addresses/AddressList.module.css";
 import cls from "./OrderList.module.css";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
+import { Grid } from '@mui/material/';
 
 const OrderList = () => {
   const [value, setValue] = useState("1");
@@ -95,8 +96,12 @@ const OrderList = () => {
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <TabList onChange={handleChange} aria-label="lab API tabs example">
-              <Tab label="سفارش های قبلی" value="1" />
-              <Tab label="سفارش های فعال" value="2" />
+                <Grid xs={6} value="1">
+                  <Tab label="سفارش های قبلی"  />
+                </Grid>
+                <Grid xs={6} value="2" >
+                  <Tab label="سفارش های فعال" />
+                </Grid>
             </TabList>
           </Box>
           <TabPanel value="1">

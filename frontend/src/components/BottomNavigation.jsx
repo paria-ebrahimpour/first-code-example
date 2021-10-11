@@ -7,8 +7,10 @@ import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 // import classes from "./BottomAppBar.module.css";
 // import { makeStyles } from "@mui/styles";
 import { styled } from "@mui/material/styles";
+import { Grid } from "@mui/material/";
+import AccountCircle from "@mui/icons-material/AccountCircle";
 
-export default function LabelBottomNavigation() {
+export default function BottomNavigation() {
   const [value, setValue] = useState("products");
 
   const handleChange = (event, newValue) => {
@@ -23,32 +25,28 @@ export default function LabelBottomNavigation() {
     // alignItems: "center",
   }));
 
-  // const BottomNavigationAction = styled("div")(({ theme }) => ({
-  //   color: "#2a9d8f",
-  // }));
   return (
-    <BottomNavigation fullWidth value={value} onChange={handleChange}>
-      {/* {" "} */}
+    <BottomNavigation sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor: "#2a9d8f"}} value={value} onChange={handleChange} className="navbar">
       <BottomNavigationAction
-        backgroundColor="error"
+      // color="inherit"
+        value="myAccount"
         component={NavLink}
         to="/my-account"
         label="داشبورد"
-        value="myAccount"
-        icon={<AccountBoxRoundedIcon />}
+        icon={<AccountCircle />}
       />
       <BottomNavigationAction
-        component={NavLink}
-        to="/"
-        label="محصولات"
         value="products"
+        to="/"
+        component={NavLink}
+        label="محصولات"
         icon={<FastfoodRoundedIcon />}
       />
       <BottomNavigationAction
         component={NavLink}
         to="/orderlist"
-        label="سفارش ها"
         value="orderlist"
+        label="سفارش ها"
         icon={<ShoppingCartRoundedIcon />}
       />
     </BottomNavigation>

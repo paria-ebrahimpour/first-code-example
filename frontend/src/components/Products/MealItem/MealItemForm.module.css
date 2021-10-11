@@ -8,13 +8,18 @@
   background-color: #f4a261;
   border: 1px solid #f4a261;
   color: white;
-  padding: 0.25rem 2rem;
+  padding: 0.25rem 1rem;
   border-radius: 20px;
   font-weight: bold;
+  font-size: 13px;
 }
 
 .form button:hover,
 .form button:active {
   background-color: #ec944c;
   border-color: #ec944c;
+}
+
+.form Input {
+  margin-top: 7px;
 }
