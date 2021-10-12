@@ -3,11 +3,11 @@ import React from "react";
 import SearchProduct from "../components/Products/SearchProduct";
 import Products from "./../components/Products/Products";
 
-const ProductList = () => {
+const ProductList = (props) => {
   return (
     <React.Fragment>
       {/* <SearchProduct /> */}
-      <Products />
+      <Products onShowExitCart={props.onShowExitCart} />
     </React.Fragment>
   );
 };

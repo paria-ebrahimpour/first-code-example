@@ -72,7 +72,7 @@ const App = () => {
                 />
               )}
               <Route path="/" exact>
-                <ProductList />
+                <ProductList onShowExitCart={showExitCartHandler} />
               </Route>
               <Route path="/reset" exact>
                 <Reset />

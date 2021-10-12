@@ -14,7 +14,7 @@
 
 .modal {
   position: fixed;
-  height: 200px;
+  /* height: 450px; */
   top: 20vh;
   left: 5%;
   width: 50%;

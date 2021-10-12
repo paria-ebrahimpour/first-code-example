@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import React, { useContext, useState } from "react";
 import AuthContext from "../../store/auth-context";
 import Modal from "../UI/Modal";
@@ -39,7 +40,12 @@ const ExitCart = (props) => {
     </React.Fragment>
   );
 
-  let exit = <p>شما وارد حساب خود نشده اید</p>;
+  let exit = (
+    <React.Fragment>
+  <p>شما وارد حساب خود نشده اید</p>
+      <Button href="/sign-in" variant="contained">ورود به حساب کاربری</Button>
+    </React.Fragment>
+  )
 
   if (authCtx.isLoggedIn && !didExit) {
     exit=(

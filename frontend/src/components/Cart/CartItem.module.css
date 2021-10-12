@@ -2,9 +2,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid #f4a261;
-  padding: 1rem 0;
-  margin: 1rem 0;
+  border-bottom: 1px solid #f4a261;
+  padding: 0.3rem 0;
+  /* margin: 1rem 0; */
 }
 
 .cart-item h2 {
@@ -46,7 +46,7 @@
 .cart-item button {
   font: inherit;
   font-weight: bold;
-  font-size: 1.25rem;
+  font-size: 0.9rem;
   color: #f4a261;
   border: 1px solid #f4a261;
   width: 3rem;

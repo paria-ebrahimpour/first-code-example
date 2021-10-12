@@ -1,43 +1,26 @@
 import React, { useContext } from "react";
 import CartContext from "../../../store/cart-context";
-import classes from "./MealItem.module.css";
 import MealItemForm from "./MealItemForm";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Grid } from "@mui/material/";
 
 const MealItem = (props) => {
   const cartCtx = useContext(CartContext);
 
-  const price = `${props.price} تومان`;
-
   const addToCartHandler = (amount) => {
-    cartCtx.addItem({
-      id: props.id,
-      name: props.name,
-      amount: amount,
-      price: props.price,
-    });
-  };
+      cartCtx.addItem({
+        id: props.id,
+        name: props.name,
+        amount: amount,
+        price: props.price,
+      });
+    }
 
   return (
     <React.Fragment>
-      {/* <li className={classes.meal}>
-      <div>
-      <img className={classes.image} src={props.image}/>
-        <h3 className={classes.name}>{props.name}</h3>
-        <div className={classes.description}>{props.description}</div>
-        <div className={classes.price}>{price}</div>
-      </div>
-      <div>
-        <MealItemForm onAddToCart={addToCartHandler} />
-      </div>
-    </li> */}
-
       <Card sx={{ maxWidth: 345 }}>
         <CardMedia
           component="img"
@@ -57,7 +40,7 @@ const MealItem = (props) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <MealItemForm onAddToCart={addToCartHandler} />
+          <MealItemForm onShowExitCart={props.onShowExitCart} onAddToCart={addToCartHandler} />
         </CardActions>
       </Card>
     </React.Fragment>
