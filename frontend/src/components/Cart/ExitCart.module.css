@@ -1,5 +1,5 @@
 .actions {
-  text-align: right;
+  text-align: left;
 }
 
 .actions button {
@@ -7,9 +7,8 @@
   cursor: pointer;
   background-color: transparent;
   border: 1px solid #f4a261;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 1rem;
   border-radius: 20px;
-  margin-right: 1rem;
 }
 
 .actions button:hover,

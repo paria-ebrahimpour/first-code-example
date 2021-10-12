@@ -18,11 +18,11 @@ const ExitCart = (props) => {
     <React.Fragment>
       <p>آیا می خواهید از حساب خارج شوید؟</p>
       <div className={classes.actions}>
-        <button className={classes["button"]} onClick={props.onClose}>
-          بستن
-        </button>
         <button className={classes["button"]} onClick={lougoutHandler}>
           خروج از حساب کاربری
+        </button>
+        <button className={classes["button"]} onClick={props.onClose}>
+          بستن
         </button>
       </div>
     </React.Fragment>
@@ -39,12 +39,45 @@ const ExitCart = (props) => {
     </React.Fragment>
   );
 
+  let exit = <p>شما وارد حساب خود نشده اید</p>;
+
+  if (authCtx.isLoggedIn && !didExit) {
+    exit=(
+    <React.Fragment>
+    <p>آیا می خواهید از حساب خارج شوید؟</p>
+    <div className={classes.actions}>
+      <button className={classes["button"]} onClick={lougoutHandler}>
+        خروج از حساب کاربری
+      </button>
+      <button className={classes["button"]} onClick={props.onClose}>
+        بستن
+      </button>
+    </div>
+  </React.Fragment>)
+  } if (!authCtx.isLoggedIn && didExit){
+    exit= (
+      <React.Fragment>
+      <p>با موفقیت از حساب خارج شد</p>
+      <div className={classes.actions}>
+        <button className={classes["button--alt"]} onClick={props.onClose}>
+          بستن
+        </button>
+      </div>
+    </React.Fragment>
+    )
+  }
+
+
+   let content = exit 
+
   return (
     <Modal onClose={props.onClose}>
-      <React.Fragment>
+      {content}
+      {/* <React.Fragment>
         {!didExit && didExitModalContent}
         {didExit && didExitedModalContent}
-      </React.Fragment>
+        {!authCtx.isLoggedIn && <p>شما وارد حساب خود نشده اید</p>}
+      </React.Fragment> */}
     </Modal>
   );
 };

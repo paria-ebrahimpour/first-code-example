@@ -175,7 +175,7 @@ const SignIn = () => {
   //   ? "form-control invalid"
   //   : "form-control";
 
-  return (
+  const signInContent = (
     <Container onSubmit={formSubmissionHandler} component="main" maxWidth="xs">
       <CssBaseline />
       <Box
@@ -253,8 +253,14 @@ const SignIn = () => {
           </Grid>
         </Box>
       </Box>
-      {isLoading && <LoadingSpinner />}
     </Container>
+  );
+
+  return (
+    <React.Fragment>
+      {!isLoading &&  signInContent}
+      {isLoading && <LoadingSpinner />}
+    </React.Fragment>
   );
 };
 export default SignIn;

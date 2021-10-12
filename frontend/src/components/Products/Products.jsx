@@ -10,7 +10,7 @@ import Grid from "@mui/material/Grid";
 import LoadingSpinner from "./../UI/LoadingSpinner";
 // import SortByAlphaIcon from '@mui/icons-material/SortByAlpha';
 import SortIcon from '@mui/icons-material/Sort';
-import { Card } from "@mui/material";
+// import { Card } from "@mui/material";
 
 const Products = () => {
   const [products, setProducts] = useState([]);

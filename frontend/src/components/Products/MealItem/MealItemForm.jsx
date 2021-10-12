@@ -28,7 +28,9 @@ const MealItemForm = (props) => {
   };
 
   return (
-    <form className={classes.form} onSubmit={submitHandler}>
+    <form className={classes.form} 
+    onSubmit={submitHandler}
+    >
 <Grid container spacing ={2}>
 <Grid item lg={6}>
 <Input
@@ -52,7 +54,7 @@ const MealItemForm = (props) => {
 </Grid>
      
     
-      {!amountIsValid && <p>Please enter a valid amount (1-5).</p>}
+      {/* {!amountIsValid && <p>Please enter a valid amount (1-5).</p>} */}
     </form>
   );
 };

@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Button, Card } from "@mui/material";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
@@ -10,16 +9,17 @@ import AuthContext from "../store/auth-context";
 import Section from "../components/UI/Section";
 import AddressItem from "./addresses/AddressItem";
 import classes from "./addresses/AddressList.module.css";
-import cls from "./OrderList.module.css";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
 import { Grid } from '@mui/material/';
+import LoginCard from "../components/LoginCard";
 
 const OrderList = () => {
   const [value, setValue] = useState("1");
-  const authCtx = useContext(AuthContext);
   const [orders, setOrders] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  
+  const authCtx = useContext(AuthContext);
 
   useEffect(() => {
     setIsLoading(true);
@@ -115,38 +115,11 @@ const OrderList = () => {
     </React.Fragment>
   );
 
-  const isntLoggedInContent = (
-    <React.Fragment>
-      <Box
-        className={cls.card}
-        sx={{
-          width: 450,
-          height: 200,
-          borderRadius: 11,
-          "&:hover": {
-            backgroundColor: "gainsboro",
-            opacity: [0.9, 0.8, 0.7],
-          },
-        }}
-      >
-        <p>برای مشاهده سفارش های خود وارد حساب کاربری شوید</p>
-        <Button
-          href="/sign-in"
-          type="signin"
-          variant="contained"
-          sx={{ mt: 3, mb: 2 }}
-        >
-          ورود به حساب کاربری
-        </Button>
-      </Box>
-    </React.Fragment>
-  );
-
   return (
     <React.Fragment>
       {error && <p>مشلکی پیش آمده، لطفا بعدا تلاش کنید</p>}
       {authCtx.isLoggedIn && isLoggedInContent}
-      {!authCtx.isLoggedIn && isntLoggedInContent}
+      {!authCtx.isLoggedIn && <LoginCard/>}
       {isLoading && <LoadingSpinner />}
     </React.Fragment>
   );
