@@ -105,10 +105,10 @@ const Checkout = (props) => {
           </Select>
         </FormControl>
         <div className={classes.actions}>
-          <button type="button" onClick={props.onCancel}>
+          <Button color="secondary" type="button" onClick={props.onCancel}>
             بستن
-          </button>
-          <button type="submit" className={classes.submit}>ثبت سفارش</button>
+          </Button>
+          <Button color="secondary" type="submit" className={classes.submit}>ثبت سفارش</Button>
         </div>
       </form>
     );

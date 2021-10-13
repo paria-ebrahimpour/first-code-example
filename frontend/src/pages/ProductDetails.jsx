@@ -40,58 +40,6 @@ const ProductDetails = (props) => {
   if (!loadedQuote.name) {
     return <p>غذا یافت نشد</p>;
   }
-  // const [product, setProduct] = useState([]);
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [httpError, setHttpError] = useState(false);
-  // const match = useRouteMatch();
-  // const params = useParams();
-
-  // const { mealId } = params;
-  // // mealId= props.match.params.mealId
-
-  // useEffect(() => {
-  //   const fetchProduct = async () => {
-  //     const response = await fetch(
-  //       `https://first-pwa-4cb00-default-rtdb.firebaseio.com/foods/${params}.json`
-  //     );
-
-  //     if (!response.ok) {
-  //       throw new Error("Something went wrong!");
-  //     }
-  //     const loadedProduct = [];
-  //     // if (params === response.id) {
-  //       const responseData = await response.json();
-  //     // if (params === response.id) {
-  //       for (const key in responseData) {
-  //         loadedProduct.push({
-  //           id: key,
-  //           name: responseData[key].name,
-  //           description: responseData[key].description,
-  //           price: responseData[key].price,
-  //           image: responseData[key].image,
-  //         });
-  //       }
-  //       setProduct(loadedProduct);
-  //       setIsLoading(false);
-  //     // }
-  //   };
-
-  //   fetchProduct().catch((error) => {
-  //     setIsLoading(false);
-  //     setHttpError(error.message);
-  //   });
-  // }, [mealId]);
-
-  // if (isLoading) {
-  //   return <LoadingSpinner />;
-  // }
-  // if (httpError) {
-  //   <section>
-  //     <p>{httpError}</p>
-  //   </section>;
-  // }
-
-  console.log(loadedQuote);
 
   return (
     <div>

@@ -26,6 +26,7 @@ const LoginCard = () => {
           <Button
             href="/sign-in"
             type="signin"
+            color="secondary"
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >

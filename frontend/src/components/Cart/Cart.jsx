@@ -5,6 +5,7 @@ import Modal from "../UI/Modal";
 import classes from "./Cart.module.css";
 import CartItem from "./CartItem";
 import Checkout from "./Checkout";
+import { Button } from '@mui/material';
 
 const Cart = (props) => {
   const [isCheckout, setIsCheckout] = useState(false);
@@ -61,13 +62,13 @@ const Cart = (props) => {
 
   const modalActions = (
     <div className={classes.actions}>
-      <button className={classes["button--alt"]} onClick={props.onClose}>
+      <Button color="secondary" onClick={props.onClose}>
         بستن
-      </button>
+      </Button>
       {hasItems && (
-        <button className={classes.button} onClick={orderHandler}>
+        <Button color="secondary" onClick={orderHandler}>
           سفارش دهید
-        </button>
+        </Button>
       )}
     </div>
   );

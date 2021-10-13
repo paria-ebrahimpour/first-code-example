@@ -42,39 +42,52 @@ const ExitCart = (props) => {
 
   let exit = (
     <React.Fragment>
-  <p>شما وارد حساب خود نشده اید</p>
-      <Button href="/sign-in" variant="contained">ورود به حساب کاربری</Button>
+      <p>شما وارد حساب خود نشده اید</p>
+      <Button href="/sign-in" variant="contained">
+        ورود به حساب کاربری
+      </Button>
     </React.Fragment>
-  )
+  );
 
   if (authCtx.isLoggedIn && !didExit) {
-    exit=(
-    <React.Fragment>
-    <p>آیا می خواهید از حساب خارج شوید؟</p>
-    <div className={classes.actions}>
-      <button className={classes["button"]} onClick={lougoutHandler}>
-        خروج از حساب کاربری
-      </button>
-      <button className={classes["button"]} onClick={props.onClose}>
-        بستن
-      </button>
-    </div>
-  </React.Fragment>)
-  } if (!authCtx.isLoggedIn && didExit){
-    exit= (
+    exit = (
       <React.Fragment>
-      <p>با موفقیت از حساب خارج شد</p>
-      <div className={classes.actions}>
-        <button className={classes["button--alt"]} onClick={props.onClose}>
-          بستن
-        </button>
-      </div>
-    </React.Fragment>
-    )
+        <p>آیا می خواهید از حساب خارج شوید؟</p>
+        <div>
+          <Button
+            color="secondary"
+            variant="contained"
+            sx={{ margin: 2 }}
+            onClick={lougoutHandler}
+          >
+            خروج از حساب کاربری
+          </Button>
+          <Button color="secondary" variant="contained" onClick={props.onClose}>
+            بستن
+          </Button>
+        </div>
+      </React.Fragment>
+    );
+  }
+  if (!authCtx.isLoggedIn && didExit) {
+    exit = (
+      <React.Fragment>
+        <p>با موفقیت از حساب خارج شد</p>
+        <div>
+          <Button
+            color="secondary"
+            sx={{ margin: 2 }}
+            variant="contained"
+            onClick={props.onClose}
+          >
+            بستن
+          </Button>
+        </div>
+      </React.Fragment>
+    );
   }
 
-
-   let content = exit 
+  let content = exit;
 
   return (
     <Modal onClose={props.onClose}>

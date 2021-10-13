@@ -5,13 +5,12 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import AuthContext from "../store/auth-context";
-// import useHttp from "../hooks/use-http";
-import Section from "../components/UI/Section";
 import AddressItem from "./addresses/AddressItem";
-import classes from "./addresses/AddressList.module.css";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
 import { Grid, Card, List } from "@mui/material/";
 import LoginCard from "../components/LoginCard";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
 
 const OrderList = () => {
   const [value, setValue] = useState("1");
@@ -63,7 +62,7 @@ const OrderList = () => {
 
   if (orders.length > 0) {
     addressList = (
-      <ul>
+      <ul style={{ listStyleType: "none" }}>
         {orders.map((order) => (
           <AddressItem
             key={order.id}
@@ -71,9 +70,41 @@ const OrderList = () => {
             orderItems={order.orderItems}
             address={order.user}
           >
-            <span>
-              {order.name} - {order.price} - {order.amount} {order.user} 
-            </span>
+            <Card sx={{ display: "flex", alignItems: "center" }}>
+              <Box sx={{ display: "flex", flexDirection: "column" }}>
+                <CardContent sx={{ flex: "1 0 auto" }}>
+                  <Typography component="div" variant="h5">
+                   نام غذا: {order.name}
+                  </Typography>
+                  <Typography
+                    variant="subtitle1"
+                    color="text.secondary"
+                    component="div"
+                  >
+                   تعداد: {order.amount}
+                  </Typography>
+                </CardContent>
+              </Box>
+              <Box sx={{ display: "flex", flexDirection: "column" }}>
+                <CardContent sx={{ flex: "1 0 auto" }}>
+                  <Typography component="div" variant="subtitle1">
+                  قیمت:  {order.price}
+                  </Typography>
+                  <Typography
+                    variant="subtitle1"
+                    color="text.secondary"
+                    component="div"
+                  >
+                   آدرس: {order.user}
+                  </Typography>
+                  <Typography
+                    variant="subtitle1"
+                    color="text.secondary"
+                    component="div"
+                  ></Typography>
+                </CardContent>
+              </Box>
+            </Card>
           </AddressItem>
         ))}
       </ul>
@@ -94,7 +125,7 @@ const OrderList = () => {
       <Box sx={{ width: "100%", typography: "body1" }}>
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-            <TabList onChange={handleChange} aria-label="lab API tabs example">
+            <TabList onChange={handleChange} label="orders">
               <Grid xs={6} value="1">
                 <Tab label="سفارش های قبلی" />
               </Grid>
@@ -103,20 +134,7 @@ const OrderList = () => {
               </Grid>
             </TabList>
           </Box>
-          <TabPanel value="1">
-            <Card>
-              <List
-                sx={{
-                  width: "100%",
-                  textAlign: "right",
-                  listStyleType: "none",
-                }}
-              >
-                {content}
-              </List>
-              {/* <div className={classes.container}>{content}</div> */}
-            </Card>
-          </TabPanel>
+          <TabPanel value="1">{content}</TabPanel>
           <TabPanel value="2">سفارش های فعال</TabPanel>
         </TabContext>
       </Box>
