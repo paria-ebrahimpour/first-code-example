@@ -45,7 +45,7 @@ const MealItemForm = (props) => {
         <input
           // style={{ borderColor: "#2a9d8f" }}
           className={classes.counter}
-          borderColor="primary"
+          // borderColor="primary"
           type="number"
           value={value}
         />

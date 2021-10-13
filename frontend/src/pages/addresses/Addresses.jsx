@@ -24,6 +24,7 @@ const Addresses = (props) => {
 
   return (
     <React.Fragment>
+    <h1 style={{fontSize: 23}}>آدرس های کاربر</h1>
       <AddAddress onConfirm={submitAddressHandler} />
       <AddressList />
     </React.Fragment>

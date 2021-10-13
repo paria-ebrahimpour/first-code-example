@@ -1,9 +1,8 @@
 import useHttp from "../../hooks/use-http";
-import Section from "../../components/UI/Section";
 import AddressItem from "./AddressItem";
 import classes from "./AddressList.module.css";
 import { useEffect, useState } from "react";
-import { Button } from "@mui/material";
+import { Card } from "@mui/material/";
 
 const AddressList = (props) => {
   const [addresses, setAddresses] = useState([]);
@@ -62,11 +61,7 @@ const AddressList = (props) => {
     content = "در حال پردازش...";
   }
 
-  return (
-    <Section>
-      <div className={classes.container}>{content}</div>
-    </Section>
-  );
+  return <Card sx={{marginBottom: 9}}>{content}</Card>;
 };
 
 export default AddressList;

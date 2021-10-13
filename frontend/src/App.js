@@ -100,7 +100,7 @@ const App = () => {
                 {authCtx.isLoggedIn && <Addresses />}
                 {!authCtx.isLoggedIn && <Redirect to="/sign-in" />}
               </Route>
-              <Route path="/my-account/user-info">
+              <Route path="/my-account/user-information">
                 {authCtx.isLoggedIn && <UserInformation />}
                 {!authCtx.isLoggedIn && <Redirect to="/sign-in" />}
               </Route>
