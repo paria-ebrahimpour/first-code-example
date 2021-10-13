@@ -45,7 +45,6 @@ const Checkout = (props) => {
 
   const confirmHandler = (event) => {
     event.preventDefault();
-
     // const enteredStreet = streetInputRef.current.value;
 
     // const enteredStreetIsValid = !isEmpty(enteredStreet);
@@ -62,7 +61,7 @@ const Checkout = (props) => {
     setAddress(event.target.value);
 
     props.onConfirm({
-      street: orders,
+      street: address,
     });
   };
 
@@ -86,10 +85,11 @@ const Checkout = (props) => {
             labelId="demo-simple-select-standard-label"
             id="demo-simple-select-standard"
             onChange={changeHandler}
+            value={address}
             label="address"
             type="submit"
           >
-            {orders.map((ad) => (
+            {orders.map((orders) => (
               <MenuItem
                 value={orders}
                 // key={ad.id}
@@ -98,7 +98,7 @@ const Checkout = (props) => {
                 // address={ad.address}
               >
                 <span>
-                  {ad.city} - {ad.address}
+                  {orders.city} - {orders.address}
                 </span>
               </MenuItem>
             ))}
@@ -108,14 +108,13 @@ const Checkout = (props) => {
           <button type="button" onClick={props.onCancel}>
             بستن
           </button>
-          <button className={classes.submit}>ثبت سفارش</button>
+          <button type="submit" className={classes.submit}>ثبت سفارش</button>
         </div>
       </form>
     );
   }
 
   let content = addresslist;
-
   // const streetControlClasses = `${classes.control} ${
   //   formInputValidity.street ? "" : classes.invalid
   // }`;

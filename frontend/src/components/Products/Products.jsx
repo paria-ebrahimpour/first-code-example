@@ -136,7 +136,6 @@ const Products = (props) => {
       name={p.name}
       description={p.description}
       price={p.price}
-      image={p.image}
       onShowExitCart={props.onShowExitCart}
     />  
     </Grid> 

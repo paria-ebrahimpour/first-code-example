@@ -10,7 +10,7 @@ import Section from "../components/UI/Section";
 import AddressItem from "./addresses/AddressItem";
 import classes from "./addresses/AddressList.module.css";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
-import { Grid } from '@mui/material/';
+import { Grid, Card, List } from "@mui/material/";
 import LoginCard from "../components/LoginCard";
 
 const OrderList = () => {
@@ -18,7 +18,7 @@ const OrderList = () => {
   const [orders, setOrders] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  
+
   const authCtx = useContext(AuthContext);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const OrderList = () => {
             amount: responseData[a].orderItems[0].amount,
             name: responseData[a].orderItems[0].name,
             price: responseData[a].orderItems[0].price,
-            // user: responseData[a].user.street,
+            user: responseData[a].user.street.address,
 
             //ina bayad dorost she
           });
@@ -72,8 +72,7 @@ const OrderList = () => {
             address={order.user}
           >
             <span>
-              {order.name} - {order.price} - {order.amount}
-              {/* - {order.user} */}
+              {order.name} - {order.price} - {order.amount} {order.user} 
             </span>
           </AddressItem>
         ))}
@@ -96,18 +95,27 @@ const OrderList = () => {
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <TabList onChange={handleChange} aria-label="lab API tabs example">
-                <Grid xs={6} value="1">
-                  <Tab label="سفارش های قبلی"  />
-                </Grid>
-                <Grid xs={6} value="2" >
-                  <Tab label="سفارش های فعال" />
-                </Grid>
+              <Grid xs={6} value="1">
+                <Tab label="سفارش های قبلی" />
+              </Grid>
+              <Grid xs={6} value="2">
+                <Tab label="سفارش های فعال" />
+              </Grid>
             </TabList>
           </Box>
           <TabPanel value="1">
-            <Section>
-              <div className={classes.container}>{content}</div>
-            </Section>
+            <Card>
+              <List
+                sx={{
+                  width: "100%",
+                  textAlign: "right",
+                  listStyleType: "none",
+                }}
+              >
+                {content}
+              </List>
+              {/* <div className={classes.container}>{content}</div> */}
+            </Card>
           </TabPanel>
           <TabPanel value="2">سفارش های فعال</TabPanel>
         </TabContext>
@@ -119,7 +127,7 @@ const OrderList = () => {
     <React.Fragment>
       {error && <p>مشلکی پیش آمده، لطفا بعدا تلاش کنید</p>}
       {authCtx.isLoggedIn && isLoggedInContent}
-      {!authCtx.isLoggedIn && <LoginCard/>}
+      {!authCtx.isLoggedIn && <LoginCard />}
       {isLoading && <LoadingSpinner />}
     </React.Fragment>
   );

@@ -19,10 +19,12 @@ const OrderList = React.lazy(() => import("./pages/OrderList"));
 const SignIn = React.lazy(() => import("./pages/SignIn"));
 const SignUp = React.lazy(() => import("./pages/SignUp"));
 const Reset = React.lazy(() => import("./pages/reset-pass"));
+const ProductDetails = React.lazy(() => import("./pages/ProductDetails"));
 const ProductList = React.lazy(() => import("./pages/ProductList"));
 const Addresses = React.lazy(() => import("./pages/addresses/Addresses"));
 const ChangePass = React.lazy(() => import("./pages/changePass/changePass"));
-const UserInformation  = React.lazy(() => import('./pages/profile/information'));
+
+const UserInformation = React.lazy(() => import("./pages/profile/information"));
 
 const App = () => {
   const authCtx = useContext(AuthContext);
@@ -53,7 +55,7 @@ const App = () => {
           onShowExitCart={showExitCartHandler}
           onShowCart={showCartHandler}
         />
-      {/* <AuthenticationButton/>
+        {/* <AuthenticationButton/>
       <SignupButton/> */}
         <main>
           <Suspense
@@ -77,6 +79,9 @@ const App = () => {
               <Route path="/reset" exact>
                 <Reset />
               </Route>
+              <Route path="/meals/:mealId">
+                <ProductDetails onShowExitCart={showExitCartHandler} />
+              </Route>
               {/* <Route path="/" exact>
                 <Redirect to="/product-list" />
               </Route> */}
@@ -85,7 +90,7 @@ const App = () => {
                   <ChangePass />
                 </Route>
               )}
-                {/* <ProtectedRoute path="/new-pass">
+              {/* <ProtectedRoute path="/new-pass">
                 <ChangePass />
                 </ProtectedRoute> */}
               <Route path="/my-account" exact>

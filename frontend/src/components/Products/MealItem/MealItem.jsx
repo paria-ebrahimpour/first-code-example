@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import CartContext from "../../../store/cart-context";
 import MealItemForm from "./MealItemForm";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import { CardActionArea, CardActions } from '@mui/material';
+
 
 const MealItem = (props) => {
   const cartCtx = useContext(CartContext);
@@ -22,6 +23,7 @@ const MealItem = (props) => {
   return (
     <React.Fragment>
       <Card sx={{ maxWidth: 345 }}>
+          <CardActionArea href={`/meals/${props.id}`}>
         <CardMedia
           component="img"
           alt="green iguana"
@@ -39,6 +41,7 @@ const MealItem = (props) => {
             قیمت: {props.price} تومان
           </Typography>
         </CardContent>
+        </CardActionArea>
         <CardActions>
           <MealItemForm onShowExitCart={props.onShowExitCart} onAddToCart={addToCartHandler} />
         </CardActions>
