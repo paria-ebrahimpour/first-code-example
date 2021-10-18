@@ -14,67 +14,6 @@ import LoadingSpinner from "../components/UI/LoadingSpinner";
 import AuthContext from "../store/auth-context";
 import { useHistory } from "react-router-dom";
 
-// import React, { useEffect, useState } from "react";
-// import { Link, useHistory } from "react-router-dom";
-// import {
-//   auth,
-//   signInWithEmailAndPassword,
-//   signInWithGoogle,
-// } from "../firebase";
-// import { useAuthState } from "react-firebase-hooks/auth";
-// // import "./Login.css";
-// import LoadingSpinner from "./../components/UI/LoadingSpinner";
-
-// function SignIn() {
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [user, loading, error] = useAuthState(auth);
-//   const history = useHistory();
-//   useEffect(() => {
-//     if (loading) {
-//       <LoadingSpinner />;
-//       return;
-//     }
-//     if (user) history.replace("/");
-//   }, [user, loading]);
-//   return (
-//     <div className="login">
-//       <div className="login__container">
-//         <input
-//           type="text"
-//           className="login__textBox"
-//           value={email}
-//           onChange={(e) => setEmail(e.target.value)}
-//           placeholder="E-mail Address"
-//         />
-//         <input
-//           type="password"
-//           className="login__textBox"
-//           value={password}
-//           onChange={(e) => setPassword(e.target.value)}
-//           placeholder="Password"
-//         />
-//         <button
-//           className="login__btn"
-//           onClick={() => signInWithEmailAndPassword(email, password)}
-//         >
-//           Login
-//         </button>
-//         <button className="login__btn login__google" onClick={signInWithGoogle}>
-//           Login with Google
-//         </button>
-//         <div>
-//           <Link to="/reset">Forgot Password</Link>
-//         </div>
-//         <div>
-//           Don't have an account? <Link to="/sign-up">Register</Link> now.
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-// export default SignIn;
-
 const SignIn = () => {
   // const [isLogin, setIsLogin] = useState(true);
 
@@ -175,8 +114,8 @@ const SignIn = () => {
   //   ? "form-control invalid"
   //   : "form-control";
 
-  return (
-    <Container onSubmit={formSubmissionHandler} component="main" maxWidth="xs">
+  const signInContent = (
+    <Container onSubmit={formSubmissionHandler} component="main" maxWidth="xs" >
       <CssBaseline />
       <Box
         sx={{
@@ -184,6 +123,13 @@ const SignIn = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          width:"95%",
+          direction: "column",
+          bottom: 0,
+          // justifyContent: "center",
+          // justify: "center",
+          // marginRight: 3,
+          // alignContent: "center"
         }}
       >
         <Typography component="h1" variant="h5">
@@ -253,73 +199,14 @@ const SignIn = () => {
           </Grid>
         </Box>
       </Box>
-      {isLoading && <LoadingSpinner />}
     </Container>
+  );
+
+  return (
+    <React.Fragment>
+      {!isLoading &&  signInContent}
+      {isLoading && <LoadingSpinner />}
+    </React.Fragment>
   );
 };
 export default SignIn;
-
-//   return (
-
-//       <Container component="main" maxWidth="xs">
-//         <CssBaseline />
-//         <Box
-//           sx={{
-//             marginTop: 8,
-//             display: "flex",
-//             flexDirection: "column",
-//             alignItems: "center",
-//           }}
-//         >
-//           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-//             <LockOutlinedIcon />
-//           </Avatar>
-//           <Typography component="h1" variant="h5">
-//             Sign in
-//           </Typography>
-//           <Box
-//             component="form"
-//             onSubmit={handleSubmit}
-//             noValidate
-//             sx={{ mt: 1 }}
-//           >
-//             <TextField
-//               margin="normal"
-//               required
-//               fullWidth
-//               id="email"
-//               label="Email Address"
-//               name="email"
-//               autoComplete="email"
-//               autoFocus
-//             />
-//             <TextField
-//               margin="normal"
-//               required
-//               fullWidth
-//               name="password"
-//               label="Password"
-//               type="password"
-//               id="password"
-//               autoComplete="current-password"
-//             />
-//             <FormControlLabel
-//               control={<Checkbox value="remember" color="primary" />}
-//               label="Remember me"
-//             />
-//             <Button
-//               type="submit"
-//               fullWidth
-//               variant="contained"
-//               sx={{ mt: 3, mb: 2 }}
-//             >
-//               Sign In
-//             </Button>
-
-//           </Box>
-//         </Box>
-//         <Copyright sx={{ mt: 8, mb: 4 }} />
-//       </Container>
-//   );
-
-// export default SignIn;

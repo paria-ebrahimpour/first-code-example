@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import ListSubheader from "@mui/material/ListSubheader";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -13,8 +13,13 @@ import { useHistory } from "react-router-dom";
 // import { useAuth0 } from '@auth0/auth0-react';
 import { styled } from '@mui/material/styles';
 import { Card } from "@mui/material";
+import AuthContext from "../store/auth-context";
+import LoginCard from "../components/LoginCard";
 
 const AccountManager = (props) => {
+
+  const authCtx = useContext(AuthContext);
+
   // const [accountClicked, setAccountClicked] = useState(false);
   // const [addressClicked, setAddressClicked] = useState(false);
  
@@ -32,6 +37,11 @@ const AccountManager = (props) => {
     // setAddressClicked(true);
     return history.push("/my-account/addresses");
   };
+
+  const notificationClickedHandler = ()=> {
+    return history.push("/my-account/notifications");
+
+  }
 
 // const accountinfo =(
 //   <React.Fragment>
@@ -61,52 +71,53 @@ const StyledListItemButton = styled(ListItemButton)(({ theme }) => ({
   textAlign: "right",
 }))
 
+const isLoggedInContent = (
+  <Card sx={{ maxWidth: 600, display: "flex", alignItems: "center", justifyContent:"center", margin: "auto"}}>
+  <List
+    sx={{
+      width: "100%",
+      textAlign: "right"
+    }}
+    subheader={
+      <ListSubheader component="div" id="nested-list-subheader">
+       {/* {accountinfo} */}
+       نام و نام خانوادگی
+      </ListSubheader>
+    }
+  >
+    <StyledListItemButton onClick={accountClickedHandler}>
+      <ListItemIcon>
+        <PersonIcon />
+      </ListItemIcon>
+      <ListItemText primary="اطلاعات کاربری" />
+    </StyledListItemButton>
+    <StyledListItemButton onClick={addressClickedHandler}>
+      <ListItemIcon>
+        <RoomIcon />
+      </ListItemIcon>
+      <ListItemText primary="آدرس ها" />
+    </StyledListItemButton>
+    <StyledListItemButton onClick={notificationClickedHandler}>
+      <ListItemIcon>
+        <MessageIcon />
+      </ListItemIcon>
+      <ListItemText primary="پیام ها" />
+    </StyledListItemButton>
+    <StyledListItemButton onClick={props.onShowExitCart}>
+      <ListItemIcon>
+        <ExitToAppIcon />
+      </ListItemIcon>
+      <ListItemText primary="خروج" />
+    </StyledListItemButton>
+  </List>
+  </Card>
+)
+
   return (
-    <Card>
-    <List
-      sx={{
-        width: "100%",
-        textAlign: "right"
-        // maxWidth: "70%",
-      //   margin: "auto",
-      //   bgcolor: "background.paper",
-      }}
-      // component="nav"
-      // aria-labelledby="nested-list-subheader"
-      subheader={
-        <ListSubheader component="div" id="nested-list-subheader">
-         {/* {accountinfo} */}
-         نام و نام خانوادگی
-        </ListSubheader>
-      }
-    >
-      <StyledListItemButton onClick={accountClickedHandler}>
-        <ListItemIcon>
-          <PersonIcon />
-        </ListItemIcon>
-        <ListItemText primary="اطلاعات کاربری" />
-      </StyledListItemButton>
-      <StyledListItemButton onClick={addressClickedHandler}>
-        <ListItemIcon>
-          <RoomIcon />
-        </ListItemIcon>
-        <ListItemText primary="آدرس ها" />
-      </StyledListItemButton>
-      <StyledListItemButton>
-        <ListItemIcon>
-          <MessageIcon />
-        </ListItemIcon>
-        <ListItemText primary="پیام ها" />
-      </StyledListItemButton>
-      <StyledListItemButton onClick={props.onShowExitCart}>
-        <ListItemIcon>
-          <ExitToAppIcon />
-        </ListItemIcon>
-        <ListItemText primary="خروج" />
-        {/* {cartIsShown && <ExitCart />} */}
-      </StyledListItemButton>
-    </List>
-    </Card>
+   <React.Fragment>
+     {authCtx.isLoggedIn && isLoggedInContent}
+     {!authCtx.isLoggedIn && <LoginCard/>}
+   </React.Fragment>
   );
 };
 

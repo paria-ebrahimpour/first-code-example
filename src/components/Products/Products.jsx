@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from "react";
-// import Card from "../UI/Card";
-
+import React, { useContext, useEffect, useState } from "react";
 import classes from "./Products.module.css";
 import MealItem from "./MealItem/MealItem";
 import SearchProduct from "./SearchProduct";
-// import { Button } from "@mui/material";
 import { useHistory, useLocation } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import LoadingSpinner from "./../UI/LoadingSpinner";
 // import SortByAlphaIcon from '@mui/icons-material/SortByAlpha';
-import SortIcon from '@mui/icons-material/Sort';
-import { Card } from "@mui/material";
+import SortIcon from "@mui/icons-material/Sort";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
-const Products = () => {
+const Products = (props) => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState(false);
+  const [selectedCat, setSelectedCat] = useState("");
   const history = useHistory();
   const location = useLocation();
 
@@ -43,7 +44,8 @@ const Products = () => {
           name: responseData[key].name,
           description: responseData[key].description,
           price: responseData[key].price,
-          image:responseData[key].image
+          image: responseData[key].image,
+          cat: responseData[key].cat.name,
         });
       }
 
@@ -56,6 +58,20 @@ const Products = () => {
       setHttpError(error.message);
     });
   }, []);
+
+  //  const cats = [
+  //   { id: "1", name: "پاستا" },
+  //   { id: "2", name: "سوخاری" },
+  //   { id: "3", name: "پیش غذا" },
+  //   { id: "4", name: "ساندویچ" },
+  //   { id: "5", name: "پیتزا" },
+  // ];
+
+  const cats = ["پاستا", "سوخاری", "پیش غذا", "ساندویچ", "پیتزا"];
+
+  const selectCatHandler = (event) => {
+    setSelectedCat(event.target.value);
+  };
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -77,7 +93,16 @@ const Products = () => {
 
   const filteredProducts = filterProducts(products, searchQuery);
 
+  console.log(products);
+
   let allProducts;
+
+  if (selectedCat) {
+    allProducts = filteredProducts.filter((m) => m.cat === cats);
+  } else {
+    allProducts = products;
+  }
+
   const sortQuotes = (products, ascending) => {
     if (filteredProducts) {
       allProducts = filteredProducts;
@@ -106,34 +131,20 @@ const Products = () => {
     });
   };
 
-  const productsList = (
-    // <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-  sortedQuotes.map((p) => (
-      <MealItem
-      key={p.id}
-      id={p.id}
-      image={p.image}
-      name={p.name}
-      description={p.description}
-      price={p.price}
-      image={p.image}
-    />   
-  ))
-  // </Grid>)
-  )
-
   return (
     <section className={classes.meals}>
-      <Grid container >
-      <Grid item  md={1}>
-        <div  onClick={changeSortingHandler}>
-          {/* <SortByAlphaIcon  variant="inherit"/> */}
-          {isSortingAscending 
-          ?  <SortIcon sx={{ transform: "scaleX(-1)" }}/>
-          :  <SortIcon sx={{ transform: "rotate(-180deg)"}}/>
-          }
-        
-        </div>
+      <Grid container
+       >
+        <Grid item md={1}
+         >
+          <div onClick={changeSortingHandler}>
+            {/* <SortByAlphaIcon  variant="inherit"/> */}
+            {isSortingAscending ? (
+              <SortIcon sx={{ transform: "scaleX(-1)" }} />
+            ) : (
+              <SortIcon sx={{ transform: "rotate(-180deg)" }} />
+            )}
+          </div>
           {/* <Button variant="outlined" onClick={changeSortingHandler}>
             مرتب سازی بر اساس{" "}
             {isSortingAscending ? "بیشترین قیمت" : "کمترین قیمت"}
@@ -145,22 +156,53 @@ const Products = () => {
             setSearchQuery={setSearchQuery}
           />
         </Grid>
+        <Grid item md={3}>
+          <FormControl variant="standard" sx={{ m: 1, minWidth: 100, bottom:3  }}>
+            {/* <InputLabel id="select-cat">دسته بندی</InputLabel> */}
+            <Select
+            displayEmpty
+              id="select-cat"
+              onChange={selectCatHandler}
+              value={selectedCat}
+              label="select-cat"
+              type="submit"
+              placeholder="دسته بندی"
+            >
+              {cats.map((p) => (
+                <MenuItem value={p} onChange={() => setSelectedCat(p)} key={p}>
+                  {p}
+                </MenuItem>
+              ))}
+              {/* <MenuItem value="پاستا">پاستا</MenuItem>
+              <MenuItem value="پیتزا">پیتزا</MenuItem>
+              <MenuItem value="ساندویچ">ساندویچ</MenuItem>
+              <MenuItem value="سوخاری">سوخاری</MenuItem>
+              <MenuItem value="پیش غذا">پیش غذا</MenuItem> */}
+            </Select>
+          </FormControl>
+        </Grid>
       </Grid>
-      <Grid container sx={{ marginBottom: "9%"}} spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-     { sortedQuotes.map((p) => (
-      <Grid item xs={12} sm={4} md={4}>
-      <MealItem
-      key={p.id}
-      id={p.id}
-      image={p.image}
-      name={p.name}
-      description={p.description}
-      price={p.price}
-      image={p.image}
-    />  
-    </Grid> 
-  ))}
-    </Grid>
+      <Grid
+        container
+        sx={{ marginBottom: "9%" }}
+        spacing={{ xs: 2, md: 3 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+      >
+        {sortedQuotes.map((p) => (
+          <Grid item xs={12} sm={4} md={4}>
+            <MealItem
+              key={p.id}
+              id={p.id}
+              image={p.image}
+              name={p.name}
+              description={p.description}
+              price={p.price}
+              onShowExitCart={props.onShowExitCart}
+              cat={p.cat}
+            />
+          </Grid>
+        ))}
+      </Grid>
     </section>
   );
 };

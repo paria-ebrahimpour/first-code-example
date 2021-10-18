@@ -73,6 +73,17 @@ const PrimarySearchAppBar = (props) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const isntLoggedIn = (
+    <React.Fragment>
+      <Button component={Link} to="/sign-up" color="inherit">
+        ثبت نام
+      </Button>
+      <Button component={Link} to="/sign-in" color="inherit">
+        ورود
+      </Button>
+    </React.Fragment>
+  );
+
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -204,10 +215,11 @@ const PrimarySearchAppBar = (props) => {
   );
 
   return (
-    <Box  sx={{ position:"static", top: 0, left: 0, right: 0, marginBottom: 12}} 
-    // sx={{ flexGrow: 1 }}
+    <Box
+      sx={{ position: "static", top: 0, left: 0, right: 0, marginBottom: 12 }}
+      // sx={{ flexGrow: 1 }}
     >
-      <AppBar >
+      <AppBar>
         <Toolbar>
           <IconButton
             size="large"
@@ -230,26 +242,14 @@ const PrimarySearchAppBar = (props) => {
               نام سایت
             </p>
           </Typography>
-          {/* <AuthenticationButton/>
-      <SignupButton/> */}
-
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            {!isLoggedIn && (
-              <Button component={Link} to="/sign-up" color="inherit">
-                ثبت نام
-              </Button>
-            )}
-            {!isLoggedIn && (
-              <Button component={Link} to="/sign-in" color="inherit">
-                ورود
-              </Button>
-            )}
+            {!isLoggedIn && isntLoggedIn}
           </Box>
           {isLoggedIn && loggedInIcons}
         </Toolbar>
+        {/* {isLoggedIn && renderMenu} */}
       </AppBar>
-      {/* {isLoggedIn && renderMenu} */}
     </Box>
   );
 };

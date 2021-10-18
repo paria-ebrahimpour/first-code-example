@@ -87,15 +87,6 @@ const SignUp = () => {
   const authCtx = useContext(AuthContext);
 
   const {
-    isValid: enteredNameIsValid,
-    value: enteredName,
-    hasError: nameInputHasError,
-    valueChangeHandler: nameChangeHandler,
-    inputBlurHandler: nameBlurHandler,
-    reset: resetNameInput,
-  } = useInput(isNotEmpty);
-
-  const {
     isValid: enteredLastNameIsValid,
     value: enteredLastName,
     hasError: lastNameInputHasError,
@@ -125,7 +116,6 @@ const SignUp = () => {
   let formIsValid = false;
 
   if (
-    enteredNameIsValid &&
     enteredEmailIsValid &&
     enteredPassIsValid &&
     enteredLastNameIsValid
@@ -146,7 +136,6 @@ const SignUp = () => {
       {
         method: "POST",
         body: JSON.stringify({
-          name: enteredName,
           lastname: enteredLastName,
           email: enteredEmail,
           password: enteredPass,
@@ -180,8 +169,7 @@ const SignUp = () => {
         alert(err.message);
       });
 
-    console.log(enteredName, enteredLastName, enteredEmail, enteredPass);
-    resetNameInput();
+    console.log( enteredLastName, enteredEmail, enteredPass);
     resetEmailInput();
     resetLastNameInput();
     resetPassInput();
@@ -211,8 +199,8 @@ const SignUp = () => {
   //     email: data.get("email"),
   //     password: data.get("password"),
   //   });
-  // };
-
+  // };  
+  
   return (
     <Container onSubmit={formSubmissionHandler} component="main" maxWidth="xs">
       <CssBaseline />
@@ -221,7 +209,9 @@ const SignUp = () => {
           marginTop: 8,
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
+          alignItems: "right",
+          textAlign: "center",
+          width: "89%",
         }}
       >
         <Typography component="h1" variant="h5">
@@ -229,7 +219,7 @@ const SignUp = () => {
         </Typography>
         <Box component="form" noValidate sx={{ mt: 3 }}>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            {/* <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
                 name="firstName"
@@ -245,15 +235,18 @@ const SignUp = () => {
               {nameInputHasError && (
                 <p className="error-text">لطفا نام خود را وارد کنید</p>
               )}
-            </Grid>
-            <Grid item xs={12} sm={6}>
+            </Grid> */}
+            <Grid
+              item
+              xs={12}
+            >
               <TextField
                 required
                 fullWidth
                 onBlur={lastNameBlurHandler}
                 onChange={lastNameChangeHandler}
                 id="lastName"
-                label="نام خانوادگی"
+                label="نام و نام خانوادگی"
                 name="lastName"
                 autoComplete="lname"
                 value={enteredLastName}
@@ -298,7 +291,8 @@ const SignUp = () => {
             <Grid item xs={12}>
               <FormControlLabel
                 control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="می خواهم اخبار و اطلاعات جدید به من ایمیل شود"
+                label="اخبار و اطلاعات جدید به من ایمیل شود"
+                // sx={{textAlign: "right", direction: "rtl"}}
               />
             </Grid>
           </Grid>

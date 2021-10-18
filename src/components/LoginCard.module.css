@@ -1,0 +1,33 @@
+.card {
+  margin: auto;
+  margin-top: 70px;
+  text-align: center;
+  align-content: center;
+  width: 30%;
+  height: 40%;
+}
+
+@media (max-width: 900px) {
+  .card {
+    width: 50%;
+  }
+}
+
+@media (max-width: 700px) {
+  .card {
+    width: 80%;
+  }
+}
+
+/* 
+  .card p {
+    margin-top: 25px;
+  }
+  
+  .card Button {
+    margin-top: 15px;
+  } */
+
+/* .tab {
+    border-color: gray;
+  } */

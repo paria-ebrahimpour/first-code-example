@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
 import classes from "./AddAddress.module.css";
-import Section from "../../components/UI/Section";
-import useHttp from "../../hooks/use-http";
+import useHttp from "./../../hooks/use-http";
+import { Card } from "@mui/material/";
+import { Button } from "@mui/material";
 
 const isEmpty = (value) => value.trim() === "";
 const isTenChars = (value) => value.trim().length === 10;
@@ -50,15 +51,27 @@ const AddAddress = (props) => {
     });
   };
 
-  const addressControlClasses = `${classes.control} ${formInputValidity.address ? "" : classes.invalid
-    }`;
-  const postalControlClasses = `${classes.control} ${formInputValidity.postalCode ? "" : classes.invalid
-    }`;
-  const cityControlClasses = `${classes.control} ${formInputValidity.city ? "" : classes.invalid
-    }`;
+  const addressControlClasses = `${classes.control} ${
+    formInputValidity.address ? "" : classes.invalid
+  }`;
+  const postalControlClasses = `${classes.control} ${
+    formInputValidity.postalCode ? "" : classes.invalid
+  }`;
+  const cityControlClasses = `${classes.control} ${
+    formInputValidity.city ? "" : classes.invalid
+  }`;
 
   return (
-    <Section>
+    <Card
+      sx={{
+        maxWidth: 650,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        margin: "auto",
+        marginBottom: 8,
+      }}
+    >
       <form className={classes.form} onSubmit={confirmHandler}>
         <div className={cityControlClasses}>
           <label htmlFor="city">شهر</label>
@@ -77,14 +90,12 @@ const AddAddress = (props) => {
             <p>لطفا کد پستی معتبر اضافه کنید</p>
           )}
         </div>
-        <div className={classes.actions}>
-          <button type="submit" className={classes.submit}>
+          <Button sx={{marginTop: 2, float:"left"}} variant="contained" color="secondary" type="submit">
             ثبت آدرس
-          </button>
-        </div>
+          </Button>
       </form>
       {error && <p>{error}</p>}
-    </Section>
+    </Card>
   );
 };
 

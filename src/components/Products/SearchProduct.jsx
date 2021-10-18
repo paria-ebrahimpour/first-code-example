@@ -33,7 +33,7 @@ const SearchProduct = ({ searchQuery, setSearchQuery }) => {
   const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: "inherit",
     textAlign: "right",
-    width: "30%",
+    width: "70%",
     // "& .MuiInputBase-input": {
     //   // padding: theme.spacing(1, 1, 1, 0),
     //   // paddingLeft: `calc(1em + ${theme.spacing(1)})`,

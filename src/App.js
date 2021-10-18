@@ -19,10 +19,13 @@ const OrderList = React.lazy(() => import("./pages/OrderList"));
 const SignIn = React.lazy(() => import("./pages/SignIn"));
 const SignUp = React.lazy(() => import("./pages/SignUp"));
 const Reset = React.lazy(() => import("./pages/reset-pass"));
+const ProductDetails = React.lazy(() => import("./pages/ProductDetails"));
 const ProductList = React.lazy(() => import("./pages/ProductList"));
 const Addresses = React.lazy(() => import("./pages/addresses/Addresses"));
 const ChangePass = React.lazy(() => import("./pages/changePass/changePass"));
-const UserInformation  = React.lazy(() => import('./pages/profile/information'));
+const Notifications = React.lazy(()=> import( './pages/Notifications'));
+
+const UserInformation = React.lazy(() => import("./pages/profile/information"));
 
 const App = () => {
   const authCtx = useContext(AuthContext);
@@ -53,7 +56,7 @@ const App = () => {
           onShowExitCart={showExitCartHandler}
           onShowCart={showCartHandler}
         />
-      {/* <AuthenticationButton/>
+        {/* <AuthenticationButton/>
       <SignupButton/> */}
         <main>
           <Suspense
@@ -72,10 +75,13 @@ const App = () => {
                 />
               )}
               <Route path="/" exact>
-                <ProductList />
+                <ProductList onShowExitCart={showExitCartHandler} />
               </Route>
               <Route path="/reset" exact>
                 <Reset />
+              </Route>
+              <Route path="/meals/:mealId">
+                <ProductDetails onShowExitCart={showExitCartHandler} />
               </Route>
               {/* <Route path="/" exact>
                 <Redirect to="/product-list" />
@@ -85,17 +91,21 @@ const App = () => {
                   <ChangePass />
                 </Route>
               )}
-                {/* <ProtectedRoute path="/new-pass">
+              {/* <ProtectedRoute path="/new-pass">
                 <ChangePass />
                 </ProtectedRoute> */}
               <Route path="/my-account" exact>
                 <AccountManager onShowExitCart={showExitCartHandler} />
               </Route>
+              <Route path="/my-account/notifications">
+              {authCtx.isLoggedIn && <Notifications />}
+                {!authCtx.isLoggedIn && <Redirect to="/sign-in" />}
+              </Route>
               <Route path="/my-account/addresses">
                 {authCtx.isLoggedIn && <Addresses />}
                 {!authCtx.isLoggedIn && <Redirect to="/sign-in" />}
               </Route>
-              <Route path="/my-account/user-info">
+              <Route path="/my-account/user-information">
                 {authCtx.isLoggedIn && <UserInformation />}
                 {!authCtx.isLoggedIn && <Redirect to="/sign-in" />}
               </Route>

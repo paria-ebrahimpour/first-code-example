@@ -1,41 +1,60 @@
-import useHttp from "../../hooks/use-http";
-import Section from "../../components/UI/Section";
 import AddressItem from "./AddressItem";
-import classes from "./AddressList.module.css";
 import { useEffect, useState } from "react";
-import { Button } from "@mui/material";
+import { Card } from "@mui/material/";
+import LoadingSpinner from "../../components/UI/LoadingSpinner";
+import { getAllAddresses } from "../../lib/api";
+import useHttp from "./../../hooks/use-http";
+import { IconButton } from '@mui/material/';
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const AddressList = (props) => {
   const [addresses, setAddresses] = useState([]);
 
-  const { isLoading, error } = useHttp();
+  // const params = useParams();
+
+  // const { mealId } = params;
+
+    const deleteAddressHandler = () => {
+      console.log("deleted");
+    };
+
+  const {
+    sendRequest,
+    status,
+    error,
+    data: loadedAddresses,
+  } = useHttp(getAllAddresses);
 
   useEffect(() => {
-    const fetchAddresses = async () => {
-      const response = await fetch(
-        "https://first-pwa-4cb00-default-rtdb.firebaseio.com/addresses.json"
-      );
-      const responseData = await response.json();
-      const loadedAddresses = [];
-      for (const a in responseData) {
-        loadedAddresses.push({
-          id: a,
-          city: responseData[a].city,
-          address: responseData[a].address,
-          postalCode: responseData[a].postalCode,
-        });
-      }
-      setAddresses(loadedAddresses);
-    };
-    fetchAddresses();
-  }, []);
+    sendRequest();
+  }, [sendRequest]);
+
+  // useEffect(() => {
+  //   sendRequest(mealId);
+  // }, [mealId, sendRequest]);
+
+  if (status === "pending") {
+    return (
+      <div className="centered">
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <p className="centered">{error}</p>;
+  }
+
+  if (!loadedAddresses) {
+    return <p>آدرسی یافت نشد</p>;
+  }
 
   let addressList = <h4>آدرسی وجود ندارد. لطفا آدرس خود را وارد کنید</h4>;
 
-  if (addresses.length > 0) {
+  if (loadedAddresses.length > 0) {
     addressList = (
-      <ul>
-        {addresses.map((address) => (
+      <ul style={{ listStyleType: "none", width: 570 }}>
+        {loadedAddresses.map((address) => (
           <AddressItem
             key={address.id}
             id={address.id}
@@ -45,6 +64,15 @@ const AddressList = (props) => {
           >
             <span>
               {address.city} - {address.address}
+              <IconButton
+                sx={{ float: "left" }}
+                aria-label="delete"
+                color="error"
+                variant="contained"
+                onClick={deleteAddressHandler}
+              >
+                <DeleteIcon />
+              </IconButton>
             </span>
           </AddressItem>
         ))}
@@ -54,18 +82,19 @@ const AddressList = (props) => {
 
   let content = addressList;
 
-  // if (error) {
-  //   content = <Button onClick={}>دوباره سعی کنید</Button>;
-  // }
-
-  if (isLoading) {
-    content = "در حال پردازش...";
-  }
-
   return (
-    <Section>
-      <div className={classes.container}>{content}</div>
-    </Section>
+    <Card
+      sx={{
+        maxWidth: 650,
+        display: "flex",
+        // alignItems: "center",
+        // justifyContent: "center",
+        margin: "auto",
+        marginBottom: 8,
+      }}
+    >
+      {content}
+    </Card>
   );
 };
 

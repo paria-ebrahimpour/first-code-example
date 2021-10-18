@@ -1,20 +1,22 @@
 import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
+  // direction: 'rtl',
+
   root: {
     justifyContent: "center",
   },
   palette: {
     primary: {
-      main: "#2a9d8f",
-      dark: "#264653",
+      main: "#f54748",
+      dark: "#343f56",
     },
-    secomdary: {
-      main: "#f4a261",
-      dark: "#e9c46a",
+    secondary: {
+      main: "#fb9300",
+      dark: "#f5e6ca",
     },
     error: {
-      main: "#e76f51",
+      main: "#343f56",
     },
   },
   typography: {
