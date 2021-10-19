@@ -35,24 +35,7 @@
   cursor: pointer;
   background-color: transparent;
   border: none;
-  /* border-radius: 25px; */
   padding: 0.5rem 2rem;
-}
-
-.actions button:hover,
-.actions button:active {
-  /* background-color: #ffe6dc; */
-}
-
-.actions .submit {
-  border: 1px solid ;
-  /* background-color: #f79f58; */
-  color: grey;
-}
-
-.actions .submit:hover,
-.actions .submit:active {
-  /* background-color: #f79f58; */
 }
 
 .invalid label {
