@@ -37,7 +37,7 @@ const NewCommentForm = (props) => {
       )}
       {/* <div className={classes.control} onSubmit={submitFormHandler}> */}
         <TextField
-        sx={{width: "70%"}}
+        sx={{width: "45%"}}
         //   ref={commentTextRef}
         inputProps={{ref: commentTextRef}}
           id="comment"
@@ -48,7 +48,11 @@ const NewCommentForm = (props) => {
         />
         {/* <textarea id="comment" rows="2" ref={commentTextRef}></textarea> */}
       {/* </div> */}
-      <Button type="submit" onClick={submitFormHandler} className="btn">اضافه کردن نظر</Button>
+      <div>
+      <Button type="submit"
+      sx={{marginBottom: 10}}
+       onClick={submitFormHandler} >اضافه کردن نظر</Button>
+       </div>
     </form>
   );
 };

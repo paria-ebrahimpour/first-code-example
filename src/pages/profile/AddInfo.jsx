@@ -73,7 +73,9 @@ const AddInfo = (props) => {
         </div>
         <div className={mobileControlClasses}>
           <label htmlFor="mobile">شماره همراه</label>
-          <input placeholder="09..." type="text" id="mobile" ref={mobileInputRef} />
+          <input
+          //  placeholder="09..." 
+           type="text" id="mobile" ref={mobileInputRef} />
           {!formInputValidity.mobile && (
             <p>لطفا شماره تماس معتبر اضافه کنید</p>
           )}

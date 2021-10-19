@@ -3,8 +3,18 @@ import React from "react";
 
 const CommentItem = (props) => {
   return (
-    <List >
-      <Card>{props.text}</Card>
+    <List>
+      <Card
+        sx={{
+          maxWidth: 500,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          margin: "auto",
+        }}
+      >
+        {props.text}
+      </Card>
     </List>
   );
 };

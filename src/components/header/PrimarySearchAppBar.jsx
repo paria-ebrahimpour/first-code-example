@@ -98,6 +98,7 @@ const PrimarySearchAppBar = (props) => {
         vertical: "top",
         horizontal: "right",
       }}
+      sx={{ fontSize: 2 }}
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
@@ -131,11 +132,11 @@ const PrimarySearchAppBar = (props) => {
             <ShoppingCartRoundedIcon />
           </Badge>
         </IconButton>
-        <p>سبد خرید</p>
+        <p style={{fontSize:16}}>سبد خرید</p>
       </MenuItem>
       <MenuItem>
         <IconButton
-          size="large"
+          // size="large"
           aria-label="show 17 new notifications"
           color="inherit"
         >
@@ -143,7 +144,7 @@ const PrimarySearchAppBar = (props) => {
             <NotificationsIcon />
           </Badge>
         </IconButton>
-        <p>پیام ها</p>
+        <p style={{fontSize:16}}>پیام ها</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -155,7 +156,7 @@ const PrimarySearchAppBar = (props) => {
         >
           <AccountCircle />
         </IconButton>
-        <p>حساب کاربری</p>
+        <p style={{fontSize:16}}>حساب کاربری</p>
       </MenuItem>
     </Menu>
   );

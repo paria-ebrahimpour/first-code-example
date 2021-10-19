@@ -23,22 +23,22 @@ export default function BreadCrumbs(props) {
     >
       خانه
     </Link>,
-    <Link
-      underline="hover"
-      key="2"
-      color="inherit"
-      href="/${props.cat}"
-      onClick={handleClick}
-    >
-      {props.cat}
-    </Link>,
+    // <Link
+    //   underline="hover"
+    //   key="2"
+    //   color="inherit"
+    //   href="/${props.cat}"
+    //   onClick={handleClick}
+    // >
+    //   {props.cat}
+    // </Link>,
     <Typography noWrap="false" key="3" color="text.primary">
       {props.name}
     </Typography>,
   ];
 
   return (
-    <Stack spacing={1} sx={{marginBottom: 2, marginRight: 1}}>
+    <Stack spacing={1} sx={{marginBottom: 2, marginRight: 1, width:"100%"}}>
       <Breadcrumbs
         separator={<NavigateBeforeIcon fontSize="small" />}
         aria-label="breadcrumb"

@@ -6,12 +6,12 @@ import LoadingSpinner from "../UI/LoadingSpinner";
 import classes from "./Comments.module.css";
 import NewCommentForm from "./NewCommentForm";
 import CommentsList from "./CommentsList";
-import { Button } from '@mui/material';
-import useHttp from './../../hooks/use-http';
+import { Button } from "@mui/material";
+import useHttp from "./../../hooks/use-http";
 
 const Comments = () => {
   const [isAddingComment, setIsAddingComment] = useState(false);
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const params = useParams();
 
   const { mealId } = params;
@@ -44,27 +44,25 @@ const Comments = () => {
     comments = <CommentsList comments={loadedComments} />;
   }
 
-  if (
-    !isLoading &&
-    (!loadedComments || loadedComments.length === 0)
-  ) {
+  if (!isLoading && (!loadedComments || loadedComments.length === 0)) {
     comments = <p className="centered">کامنت ندارد</p>;
   }
   return (
     <section className={classes.comments}>
       <h5>نظرات کاربران</h5>
+      {comments}
       {!isAddingComment && (
-        <Button className="btn" onClick={startAddCommentHandler}>
-         اضافه کردن نظر
+        <Button
+          sx={{ marginBottom: 10 }}
+          className="btn"
+          onClick={startAddCommentHandler}
+        >
+          اضافه کردن نظر
         </Button>
       )}
       {isAddingComment && (
-        <NewCommentForm
-          mealId={mealId}
-          onAddedComment={addedCommentHandler}
-        />
+        <NewCommentForm mealId={mealId} onAddedComment={addedCommentHandler} />
       )}
-      {comments}
     </section>
   );
 };
