@@ -1,12 +1,10 @@
 import { useContext, useRef } from "react";
 import { useHistory } from "react-router-dom";
-import useInput from "../../hooks/use-input";
-import AuthContext from "../../store/auth-context";
+import AuthContext from "../store/auth-context";
 import classes from "./changePass.module.css";
 
 const ChangePass = () => {
   const history = useHistory();
-  const isNotEmpty = (value) => value.trim() !== "";
   const authCtx = useContext(AuthContext);
   const newPassInputRef = useRef();
 

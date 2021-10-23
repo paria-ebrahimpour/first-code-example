@@ -1,6 +1,6 @@
 import React from "react";
-import AddAddress from "./AddAddress";
-import AddressList from "./AddressList";
+import AddAddress from "../components/Addresses/AddAddress";
+import AddressList from "../components/Addresses/AddressList";
 
 const Addresses = (props) => {
   const submitAddressHandler = async (userData) => {

@@ -5,10 +5,10 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import AuthContext from "../store/auth-context";
-import AddressItem from "./addresses/AddressItem";
+import AddressItem from "../components/Addresses/AddressItem";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
-import { Grid, Card, List } from "@mui/material/";
-import LoginCard from "../components/LoginCard";
+import { Grid, Card } from "@mui/material/";
+import LoginCard from "../components/UI/LoginCard";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 

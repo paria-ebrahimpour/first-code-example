@@ -14,7 +14,7 @@ import { useHistory } from "react-router-dom";
 import { styled } from '@mui/material/styles';
 import { Card } from "@mui/material";
 import AuthContext from "../store/auth-context";
-import LoginCard from "../components/LoginCard";
+import LoginCard from "../components/UI/LoginCard";
 
 const AccountManager = (props) => {
 

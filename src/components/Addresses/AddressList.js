@@ -1,9 +1,9 @@
 import AddressItem from "./AddressItem";
 import { useEffect, useState } from "react";
 import { Card } from "@mui/material/";
-import LoadingSpinner from "../../components/UI/LoadingSpinner";
+import LoadingSpinner from "../UI/LoadingSpinner";
 import { getAllAddresses } from "../../lib/api";
-import useHttp from "./../../hooks/use-http";
+import useHttp from "../../hooks/use-http";
 import { IconButton } from '@mui/material/';
 import DeleteIcon from "@mui/icons-material/Delete";
 

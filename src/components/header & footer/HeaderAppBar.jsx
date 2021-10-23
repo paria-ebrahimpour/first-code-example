@@ -20,7 +20,7 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 // import AuthenticationButton from "../auth-buttons/authentication-button";
 // import SignupButton from "../auth-buttons/signup-button";
 
-const PrimarySearchAppBar = (props) => {
+const HeaderAppBar = (props) => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const [btnHighlighted, setBtnIsHighlited] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -48,9 +48,9 @@ const PrimarySearchAppBar = (props) => {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const isLoggedIn = authCtx.isLoggedIn;
-  const lougoutHandler = () => {
-    authCtx.logout();
-  };
+  // const lougoutHandler = () => {
+  //   authCtx.logout();
+  // };
 
   const numberOfCartItems = items.reduce((curNumber, item) => {
     return curNumber + item.amount;
@@ -255,4 +255,4 @@ const PrimarySearchAppBar = (props) => {
   );
 };
 
-export default PrimarySearchAppBar;
+export default HeaderAppBar;

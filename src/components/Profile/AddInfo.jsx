@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import classes from "./AddInfo.module.css";
-import Section from "../../components/UI/Section"
-import useHttp from './../../hooks/use-http';
+import Section from "../UI/Section"
+import useHttp from '../../hooks/use-http';
 import { Button } from '@mui/material/';
 
 const isEmpty = (value) => value.trim() === "";

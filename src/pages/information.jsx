@@ -1,5 +1,5 @@
 import React from "react";
-import AddInfo from "./AddInfo";
+import AddInfo from "../components/Profile/AddInfo";
 // import { useAuthState } from "react-firebase-hooks/auth";
 // // import { useHistory } from "react-router";
 // import "./information.css";

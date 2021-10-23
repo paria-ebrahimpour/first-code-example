@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Route, Link, useRouteMatch } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useParams, Route, useRouteMatch } from "react-router-dom";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
 import Comments from "./../components/comments/Comments";
 import { Button } from "@mui/material/";
 import ProductPage from "../components/Products/ProductPage";
 import { getSingleQuote } from "../lib/api";
-import MealItemForm from "./../components/Products/MealItem/MealItemForm";
 import useHttp from "./../hooks/use-http";
-import BreadCrumbs from "./../components/Breadcrumbs";
+import BreadCrumbs from "./../components/UI/Breadcrumbs";
 
 const ProductDetails = (props) => {
   const match = useRouteMatch();

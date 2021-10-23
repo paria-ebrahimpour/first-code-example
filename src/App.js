@@ -1,6 +1,6 @@
 import React, { useState, Suspense, useContext } from "react";
-import PrimarySearchAppBar from "./components/header/PrimarySearchAppBar";
-import BottomNavigation from "./components/BottomNavigation";
+import HeaderAppBar from "./components/header & footer/HeaderAppBar";
+import BottomNavigation from "./components/header & footer/BottomNavigation";
 import { Redirect, Route, Switch } from "react-router-dom";
 import CartProvider from "./store/CartProvider";
 import Cart from "./components/Cart/Cart";
@@ -9,9 +9,6 @@ import theme from "./theme";
 import LoadingSpinner from "./components/UI/LoadingSpinner";
 import ExitCart from "./components/Cart/ExitCart";
 import AuthContext from "./store/auth-context";
-// import ProtectedRoute from "./auth/protected-route";
-// import SignupButton from "./components/auth-buttons/signup-button";
-// import AuthenticationButton from "./components/auth-buttons/authentication-button";
 
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const AccountManager = React.lazy(() => import("./pages/AccountManager"));
@@ -21,11 +18,11 @@ const SignUp = React.lazy(() => import("./pages/SignUp"));
 const Reset = React.lazy(() => import("./pages/reset-pass"));
 const ProductDetails = React.lazy(() => import("./pages/ProductDetails"));
 const ProductList = React.lazy(() => import("./pages/ProductList"));
-const Addresses = React.lazy(() => import("./pages/addresses/Addresses"));
-const ChangePass = React.lazy(() => import("./pages/changePass/changePass"));
+const Addresses = React.lazy(() => import("./pages/Addresses"));
+const ChangePass = React.lazy(() => import("./pages/changePass"));
 const Notifications = React.lazy(()=> import( './pages/Notifications'));
 
-const UserInformation = React.lazy(() => import("./pages/profile/information"));
+const UserInformation = React.lazy(() => import("./pages/information"));
 
 const App = () => {
   const authCtx = useContext(AuthContext);
@@ -52,12 +49,10 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CartProvider>
-        <PrimarySearchAppBar
+        <HeaderAppBar
           onShowExitCart={showExitCartHandler}
           onShowCart={showCartHandler}
         />
-        {/* <AuthenticationButton/>
-      <SignupButton/> */}
         <main>
           <Suspense
             fallback={
