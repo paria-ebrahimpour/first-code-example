@@ -62,7 +62,7 @@ const MealItemForm = (props) => {
       </Grid>
       <Grid item lg={6}>
         <Button variant="contained" type="submit" onClick={submitHandler}>
-          اضافه به سبد خرید
+          اضافه به سبد
         </Button>
       </Grid>
     </Grid>

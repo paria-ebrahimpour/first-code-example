@@ -1,5 +1,5 @@
 import classes from "./CartItem.module.css";
-import { Button } from '@mui/material';
+import { Button } from "@mui/material";
 
 const CartItem = (props) => {
   const price = `تومان ${props.price}`;
@@ -14,8 +14,32 @@ const CartItem = (props) => {
         </div>
       </div>
       <div className={classes.actions}>
-        <Button color="secondary" onClick={props.onRemove}>−</Button>
-        <Button color="secondary" onClick={props.onAdd}>+</Button>
+        <Button
+          style={{
+            padding: 0,
+            maxWidth: "25px",
+            maxHeight: "25px",
+            minWidth: "30px",
+            minHeight: "25px",
+          }}
+          color="secondary"
+          onClick={props.onRemove}
+        >
+          −
+        </Button>
+        <Button
+          style={{
+            padding: 0,
+            maxWidth: "25px",
+            maxHeight: "25px",
+            minWidth: "30px",
+            minHeight: "25px",
+          }}
+          color="secondary"
+          onClick={props.onAdd}
+        >
+          +
+        </Button>
       </div>
     </li>
   );

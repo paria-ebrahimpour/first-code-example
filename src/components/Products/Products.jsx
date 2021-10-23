@@ -59,14 +59,6 @@ const Products = (props) => {
     });
   }, []);
 
-  //  const cats = [
-  //   { id: "1", name: "پاستا" },
-  //   { id: "2", name: "سوخاری" },
-  //   { id: "3", name: "پیش غذا" },
-  //   { id: "4", name: "ساندویچ" },
-  //   { id: "5", name: "پیتزا" },
-  // ];
-
   const cats = ["پاستا", "سوخاری", "پیش غذا", "ساندویچ", "پیتزا"];
 
   const selectCatHandler = (event) => {
@@ -93,19 +85,31 @@ const Products = (props) => {
 
   const filteredProducts = filterProducts(products, searchQuery);
 
-  console.log(products);
+  const selectProducts = (products, selectedCat) => {
+    if (!selectedCat) {
+      return products;
+    }
+    return products.filter((p) => {
+      return p.cat === selectedCat;
+    });
+  };
+
+  const selectedProducts = selectProducts(products, selectedCat);
 
   let allProducts;
 
-  if (selectedCat) {
-    allProducts = filteredProducts.filter((m) => m.cat === cats);
-  } else {
-    allProducts = products;
-  }
+  // if (selectedCat) {
+  //   allProducts = products.filter((m) => m.cat === cats);
+  // } else {
+  //   allProducts = products;
+  // }
 
   const sortQuotes = (products, ascending) => {
     if (filteredProducts) {
       allProducts = filteredProducts;
+    }else if(selectedProducts) {
+      allProducts = selectedProducts;
+      console.log("fdj");
     } else {
       allProducts = products;
     }
@@ -133,10 +137,8 @@ const Products = (props) => {
 
   return (
     <section className={classes.meals}>
-      <Grid container
-       >
-        <Grid item md={1}
-         >
+      <Grid container>
+        <Grid item md={1}>
           <div onClick={changeSortingHandler}>
             {/* <SortByAlphaIcon  variant="inherit"/> */}
             {isSortingAscending ? (
@@ -157,10 +159,13 @@ const Products = (props) => {
           />
         </Grid>
         <Grid item md={3}>
-          <FormControl variant="standard" sx={{ m: 1, minWidth: 100, bottom:3  }}>
+          <FormControl
+            variant="standard"
+            sx={{ m: 1, minWidth: 100, bottom: 3 }}
+          >
             {/* <InputLabel id="select-cat">دسته بندی</InputLabel> */}
             <Select
-            displayEmpty
+              displayEmpty
               id="select-cat"
               onChange={selectCatHandler}
               value={selectedCat}
@@ -169,15 +174,10 @@ const Products = (props) => {
               placeholder="دسته بندی"
             >
               {cats.map((p) => (
-                <MenuItem value={p} onChange={() => setSelectedCat(p)} key={p}>
+                <MenuItem value={p} key={p}>
                   {p}
                 </MenuItem>
               ))}
-              {/* <MenuItem value="پاستا">پاستا</MenuItem>
-              <MenuItem value="پیتزا">پیتزا</MenuItem>
-              <MenuItem value="ساندویچ">ساندویچ</MenuItem>
-              <MenuItem value="سوخاری">سوخاری</MenuItem>
-              <MenuItem value="پیش غذا">پیش غذا</MenuItem> */}
             </Select>
           </FormControl>
         </Grid>

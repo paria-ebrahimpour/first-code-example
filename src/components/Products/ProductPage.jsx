@@ -31,7 +31,10 @@ const ProductPage = (props) => {
     >
       <CardMedia
         component="img"
-        sx={{ width:"30%", display: "flexStart" }}
+        xs={12}
+        sx={{ width: "33%", 
+        // height: "35%",
+         display: "flexStart" }}
         image={props.image}
         alt="تصویر غذا"
       />
@@ -41,6 +44,7 @@ const ProductPage = (props) => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
+          margin: "auto"
         }}
       >
         <CardContent sx={{ flex: "1 0 auto" }}>
