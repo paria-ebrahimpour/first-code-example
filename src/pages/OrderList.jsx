@@ -70,7 +70,7 @@ const OrderList = () => {
             orderItems={order.orderItems}
             address={order.user}
           >
-            <Card sx={{ maxWidth: 700, display: "flex", alignItems: "center", justifyContent:"center", margin: "auto"}}>
+            <Card sx={{ maxWidth: 700, minWidth: 370, display: "flex", alignItems: "center", justifyContent:"center", margin: "auto"}}>
               <Box sx={{ display: "flex", flexDirection: "column" }} >
                 <CardContent sx={{ flex: "1 0 auto" }}>
                   <Typography component="div" variant="h5">
