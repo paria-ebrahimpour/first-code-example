@@ -158,12 +158,11 @@ const Products = (props) => {
             setSearchQuery={setSearchQuery}
           />
         </Grid>
-        <Grid item md={3}>
+        {/* <Grid item md={3}>
           <FormControl
             variant="standard"
             sx={{ m: 1, minWidth: 100, bottom: 3 }}
           >
-            {/* <InputLabel id="select-cat">دسته بندی</InputLabel> */}
             <Select
               displayEmpty
               id="select-cat"
@@ -180,7 +179,7 @@ const Products = (props) => {
               ))}
             </Select>
           </FormControl>
-        </Grid>
+        </Grid> */}
       </Grid>
       <Grid
         container
