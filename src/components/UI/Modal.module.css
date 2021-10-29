@@ -10,11 +10,12 @@
 
 .content {
   margin: 30px;
+
 }
 
 .modal {
-  position: fixed;
-  top: 20vh;
+  /* position: fixed; */
+  top: 30%;
   margin: auto;
   width: 50%;
   background-color: white;
@@ -22,6 +23,11 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;
   animation: slide-down 300ms ease-out forwards;
+  position: absolute;
+  left: 30%;
+  margin-top: -50px;
+  margin-left: -90px;
+
 }
 
 @media (max-width: 768px) {
