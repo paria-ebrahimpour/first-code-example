@@ -132,19 +132,19 @@ const HeaderAppBar = (props) => {
             <ShoppingCartRoundedIcon />
           </Badge>
         </IconButton>
-        <p style={{fontSize:16}}>سبد خرید</p>
+        <p style={{ fontSize: 16 }}>سبد خرید</p>
       </MenuItem>
-      <MenuItem>
+      <MenuItem component={Link} to="/my-account/notifications">
         <IconButton
           // size="large"
-          aria-label="show 17 new notifications"
+          // aria-label="show 17 new notifications"
           color="inherit"
         >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
+          {/* <Badge badgeContent={""} color="error"> */}
+          <NotificationsIcon />
+          {/* </Badge> */}
         </IconButton>
-        <p style={{fontSize:16}}>پیام ها</p>
+        <p style={{ fontSize: 16 }}>پیام ها</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -156,7 +156,7 @@ const HeaderAppBar = (props) => {
         >
           <AccountCircle />
         </IconButton>
-        <p style={{fontSize:16}}>حساب کاربری</p>
+        <p style={{ fontSize: 16 }}>حساب کاربری</p>
       </MenuItem>
     </Menu>
   );
@@ -172,6 +172,7 @@ const HeaderAppBar = (props) => {
           color="inherit"
           className={btnClasses}
           onClick={props.onShowCart}
+          sx={{ padding: 0 }}
         >
           <Badge badgeContent={numberOfCartItems} color="error">
             <ShoppingCartRoundedIcon />
@@ -179,12 +180,14 @@ const HeaderAppBar = (props) => {
         </IconButton>
         <IconButton
           size="large"
-          aria-label="show 17 new notifications"
+          // aria-label="show 17 new notifications"
           color="inherit"
+          component={Link}
+          to="/my-account/notifications"
         >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
+          {/* <Badge badgeContent={17} color="error"> */}
+          <NotificationsIcon />
+          {/* </Badge> */}
         </IconButton>
         <IconButton
           size="large"
