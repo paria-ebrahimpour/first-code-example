@@ -5,7 +5,7 @@ import AddressList from "../components/Addresses/AddressList";
 const Addresses = (props) => {
   const submitAddressHandler = async (userData) => {
     await fetch(
-      "https://first-pwa-4cb00-default-rtdb.firebaseio.com/addresses.json",
+      "https://paria-1993-default-rtdb.firebaseio.com/addresses.json",
       {
         method: "POST",
         headers: {

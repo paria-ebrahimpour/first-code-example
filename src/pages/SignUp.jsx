@@ -13,72 +13,6 @@ import { Link, useHistory } from "react-router-dom";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
 import AuthContext from "../store/auth-context";
 
-// import React, { useEffect, useState } from "react";
-// import { useAuthState } from "react-firebase-hooks/auth";
-// import { Link, useHistory } from "react-router-dom";
-// import {
-//   auth,
-//   registerWithEmailAndPassword,
-//   signInWithGoogle,
-// } from "../firebase";
-// // import "./Register.css";
-
-// function SignUp() {
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [name, setName] = useState("");
-//   const [user, loading, error] = useAuthState(auth);
-//   const history = useHistory();
-//   const register = () => {
-//     if (!name) alert("Please enter name");
-//     registerWithEmailAndPassword(name, email, password);
-//   };
-//   useEffect(() => {
-//     if (loading) return;
-//     if (user) history.replace("/dashboard");
-//   }, [user, loading]);
-//   return (
-//     <div className="register">
-//       <div className="register__container">
-//         <input
-//           type="text"
-//           className="register__textBox"
-//           value={name}
-//           onChange={(e) => setName(e.target.value)}
-//           placeholder="Full Name"
-//         />
-//         <input
-//           type="text"
-//           className="register__textBox"
-//           value={email}
-//           onChange={(e) => setEmail(e.target.value)}
-//           placeholder="E-mail Address"
-//         />
-//         <input
-//           type="password"
-//           className="register__textBox"
-//           value={password}
-//           onChange={(e) => setPassword(e.target.value)}
-//           placeholder="Password"
-//         />
-//         <button className="register__btn" onClick={register}>
-//           Register
-//         </button>
-//         <button
-//           className="register__btn register__google"
-//           onClick={signInWithGoogle}
-//         >
-//           Register with Google
-//         </button>
-//         <div>
-//           Already have an account? <Link to="/sign-in">Login</Link> now.
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-// export default SignUp;
-
 const SignUp = () => {
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
@@ -115,11 +49,7 @@ const SignUp = () => {
 
   let formIsValid = false;
 
-  if (
-    enteredEmailIsValid &&
-    enteredPassIsValid &&
-    enteredLastNameIsValid
-  ) {
+  if (enteredEmailIsValid && enteredPassIsValid && enteredLastNameIsValid) {
     formIsValid = true;
   }
 
@@ -161,7 +91,6 @@ const SignUp = () => {
         }
       })
       .then((data) => {
-        // console.log(data)
         authCtx.login(data.idToken);
         history.replace("/");
       })
@@ -169,38 +98,12 @@ const SignUp = () => {
         alert(err.message);
       });
 
-    console.log( enteredLastName, enteredEmail, enteredPass);
+    console.log(enteredLastName, enteredEmail, enteredPass);
     resetEmailInput();
     resetLastNameInput();
     resetPassInput();
   };
 
-  // const nameInputClasses = nameInputHasError
-  //   ? "form-control invalid"
-  //   : "form-control";
-
-  // const lastNameInputClasses = lastNameInputHasError
-  //   ? "form-control invalid"
-  //   : "form-control";
-
-  // const emailInputClasses = emailInputHasError
-  //   ? "form-control invalid"
-  //   : "form-control";
-
-  // const passInputClasses = passInputHasError
-  //   ? "form-control invalid"
-  //   : "form-control";
-  // };
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   // eslint-disable-next-line no-console
-  //   console.log({
-  //     email: data.get("email"),
-  //     password: data.get("password"),
-  //   });
-  // };  
-  
   return (
     <Container onSubmit={formSubmissionHandler} component="main" maxWidth="xs">
       <CssBaseline />
@@ -219,27 +122,7 @@ const SignUp = () => {
         </Typography>
         <Box component="form" noValidate sx={{ mt: 3 }}>
           <Grid container spacing={2}>
-            {/* <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                onBlur={nameBlurHandler}
-                onChange={nameChangeHandler}
-                value={enteredName}
-                required
-                fullWidth
-                id="firstName"
-                label="نام"
-                // autoFocus
-              />
-              {nameInputHasError && (
-                <p className="error-text">لطفا نام خود را وارد کنید</p>
-              )}
-            </Grid> */}
-            <Grid
-              item
-              xs={12}
-            >
+            <Grid item xs={12}>
               <TextField
                 required
                 fullWidth

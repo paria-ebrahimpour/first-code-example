@@ -19,7 +19,7 @@ export default function BottomNavigation() {
   }));
 
   return (
-    <BottomNavigation sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor: "#f54748"}} value={value} onChange={handleChange} className="navbar">
+    <BottomNavigation sx={{ position: 'fixed', justifyContent: "space-around", bottom: 0, left: 0, right: 0, backgroundColor: "#f54748"}} value={value} onChange={handleChange} className="navbar">
       <BottomNavigationAction
         value="myAccount"
         component={NavLink}

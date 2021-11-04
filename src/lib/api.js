@@ -1,5 +1,5 @@
 const FIREBASE_DOMAIN =
-  "https://first-pwa-4cb00-default-rtdb.firebaseio.com";
+  "https://paria-1993-default-rtdb.firebaseio.com";
 
 export async function getAllQuotes() {
   const response = await fetch(`${FIREBASE_DOMAIN}/foods.json`);

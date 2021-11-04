@@ -27,7 +27,7 @@ const Products = (props) => {
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await fetch(
-        "https://first-pwa-4cb00-default-rtdb.firebaseio.com//foods.json"
+        "https://paria-1993-default-rtdb.firebaseio.com/foods.json"
       );
 
       if (!response.ok) {
