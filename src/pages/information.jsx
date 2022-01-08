@@ -4,7 +4,7 @@ import AddInfo from "../components/Profile/AddInfo";
 function UserInformation() {
   const submitInfoHandler = async (userData) => {
     await fetch(
-      "https://paria-1993-default-rtdb.firebaseio.com/userinfo.json",
+      "https://ganjine-5cf10-default-rtdb.firebaseio.com/userinfo.json",
       {
         method: "POST",
         headers: {

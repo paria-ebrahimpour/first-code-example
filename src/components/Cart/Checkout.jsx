@@ -18,7 +18,7 @@ const Checkout = (props) => {
   useEffect(() => {
     const fetchOrders = async () => {
       const response = await fetch(
-        "https://paria-1993-default-rtdb.firebaseio.com/addresses.json"
+        "https://ganjine-5cf10-default-rtdb.firebaseio.com/addresses.json"
       );
       const responseData = await response.json();
       const loadedOrders = [];

@@ -26,7 +26,7 @@ const OrderList = () => {
     try {
       const fetchOrders = async () => {
         const response = await fetch(
-          "https://paria-1993-default-rtdb.firebaseio.com/orders.json"
+          "https://ganjine-5cf10-default-rtdb.firebaseio.com/orders.json"
         );
         if (!response.ok) {
           throw new Error("Something went wrong!");

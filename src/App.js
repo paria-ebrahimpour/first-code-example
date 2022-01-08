@@ -21,7 +21,6 @@ const ProductList = React.lazy(() => import("./pages/ProductList"));
 const Addresses = React.lazy(() => import("./pages/Addresses"));
 const ChangePass = React.lazy(() => import("./pages/changePass"));
 const Notifications = React.lazy(()=> import( './pages/Notifications'));
-
 const UserInformation = React.lazy(() => import("./pages/information"));
 
 const App = () => {
